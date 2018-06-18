@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.TdriskReportMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.TdriskReport" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="success" property="success" jdbcType="CHAR" />
+    <result column="report_id" property="reportId" jdbcType="CHAR" />
+    <result column="final_score" property="finalScore" jdbcType="INTEGER" />
+    <result column="final_decision" property="finalDecision" jdbcType="CHAR" />
+    <result column="report_time" property="reportTime" jdbcType="BIGINT" />
+    <result column="application_id" property="applicationId" jdbcType="CHAR" />
+    <result column="apply_time" property="applyTime" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, success, report_id, final_score, final_decision, report_time, application_id, 
+    apply_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tdrisk_report
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tdrisk_report
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.TdriskReport" >
+    insert into tdrisk_report (id, vid, success, report_id, 
+      final_score, final_decision, report_time, 
+      application_id, apply_time)
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{success,jdbcType=CHAR}, #{reportId,jdbcType=CHAR}, 
+      #{finalScore,jdbcType=INTEGER}, #{finalDecision,jdbcType=CHAR}, #{reportTime,jdbcType=BIGINT}, 
+      #{applicationId,jdbcType=CHAR}, #{applyTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.TdriskReport" >
+    insert into tdrisk_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="success != null" >
+        success,
+      </if>
+      <if test="reportId != null" >
+        report_id,
+      </if>
+      <if test="finalScore != null" >
+        final_score,
+      </if>
+      <if test="finalDecision != null" >
+        final_decision,
+      </if>
+      <if test="reportTime != null" >
+        report_time,
+      </if>
+      <if test="applicationId != null" >
+        application_id,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="success != null" >
+        #{success,jdbcType=CHAR},
+      </if>
+      <if test="reportId != null" >
+        #{reportId,jdbcType=CHAR},
+      </if>
+      <if test="finalScore != null" >
+        #{finalScore,jdbcType=INTEGER},
+      </if>
+      <if test="finalDecision != null" >
+        #{finalDecision,jdbcType=CHAR},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=BIGINT},
+      </if>
+      <if test="applicationId != null" >
+        #{applicationId,jdbcType=CHAR},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.TdriskReport" >
+    update tdrisk_report
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="success != null" >
+        success = #{success,jdbcType=CHAR},
+      </if>
+      <if test="reportId != null" >
+        report_id = #{reportId,jdbcType=CHAR},
+      </if>
+      <if test="finalScore != null" >
+        final_score = #{finalScore,jdbcType=INTEGER},
+      </if>
+      <if test="finalDecision != null" >
+        final_decision = #{finalDecision,jdbcType=CHAR},
+      </if>
+      <if test="reportTime != null" >
+        report_time = #{reportTime,jdbcType=BIGINT},
+      </if>
+      <if test="applicationId != null" >
+        application_id = #{applicationId,jdbcType=CHAR},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.TdriskReport" >
+    update tdrisk_report
+    set vid = #{vid,jdbcType=CHAR},
+      success = #{success,jdbcType=CHAR},
+      report_id = #{reportId,jdbcType=CHAR},
+      final_score = #{finalScore,jdbcType=INTEGER},
+      final_decision = #{finalDecision,jdbcType=CHAR},
+      report_time = #{reportTime,jdbcType=BIGINT},
+      application_id = #{applicationId,jdbcType=CHAR},
+      apply_time = #{applyTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectTdScoreByVid" parameterType="string" resultType="java.lang.Integer">
+  	SELECT final_score FROM jyy_fk_db.tdrisk_report WHERE vid=#{vid} ORDER BY report_id DESC LIMIT 1
+  </select>
+</mapper>

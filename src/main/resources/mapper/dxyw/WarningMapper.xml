@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.dxywdao.WarningMapper" >
+
+  <insert id="insertWarning" parameterType="com.jyyjr.pojo.Warning" >
+    insert into dxd_fk.warning
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="handle_status != null">
+      	handle_status,
+      </if>
+      <if test="borrow_no != null">
+      	borrow_no,
+      </if>
+      <if test="repayment_no != null">
+      	repayment_no,
+      </if>
+      <if test="repay_time != null">
+      	repay_time,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="update_time != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handle_status != null">
+      	#{handle_status,jdbcType=INTEGER},
+      </if>
+      <if test="borrow_no != null">
+      	#{borrow_no,jdbcType=CHAR},
+      </if>
+      <if test="repayment_no != null">
+      	#{repayment_no,jdbcType=CHAR},
+      </if>
+      <if test="repay_time != null">
+      	#{repay_time,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null" >
+        #{update_time,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateWarning" parameterType="com.jyyjr.pojo.Warning" >
+    update dxd_fk.warning
+    <set >
+      <if test="status != null">
+      	status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handle_status != null">
+      	handle_status = #{handle_status,jdbcType=INTEGER},
+      </if>
+      <if test="borrow_no != null">
+      	borrow_no = #{borrow_no,jdbcType=CHAR},
+      </if>
+      <if test="repayment_no != null">
+      	repayment_no = #{repayment_no,jdbcType=CHAR},
+      </if>
+      <if test="repay_time != null">
+      	repay_time = #{repay_time,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vid = #{vid,jdbcType=CHAR} and type = #{type,jdbcType=CHAR}
+  </update>
+  
+  <update id="updateWarningAll" parameterType="com.jyyjr.pojo.Warning" >
+    update dxd_fk.warning
+    <set >
+      <if test="status != null">
+      	status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="handle_status != null">
+      	handle_status = #{handle_status,jdbcType=INTEGER},
+      </if>
+      <if test="borrow_no != null">
+      	borrow_no = #{borrow_no,jdbcType=CHAR},
+      </if>
+      <if test="repayment_no != null">
+      	repayment_no = #{repayment_no,jdbcType=CHAR},
+      </if>
+      <if test="repay_time != null">
+      	repay_time = #{repay_time,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vid = #{vid,jdbcType=CHAR}
+  </update>
+  
+  <select id="selectWarningCount" parameterType="string" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM dxd_fk.warning WHERE type=#{type} AND vid=#{vid}
+  </select>
+  
+  <select id="selectWarningByType" parameterType="string" resultType="string">
+  	SELECT vid FROM dxd_fk.warning WHERE type=#{type} and status=1
+  </select>
+  
+  <select id="selectWarningByStatus" resultType="string">
+  	SELECT vid FROM dxd_fk.warning WHERE status=1 GROUP BY vid
+  </select>
+  
+  <select id="selectWarning" resultType="com.jyyjr.pojo.Warning" parameterType="string">
+  	SELECT id,vid,type,`status`,handle_status,borrow_no,repayment_no,repay_time,ctime,update_time FROM dxd_fk.warning WHERE vid=#{vid}
+  </select>
+</mapper>

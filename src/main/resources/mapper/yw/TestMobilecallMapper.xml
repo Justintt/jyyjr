@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.TestMobilecallMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.TestMobilecall" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="callinfoid" property="callinfoid" jdbcType="INTEGER" />
+    <result column="mymobile" property="mymobile" jdbcType="BIGINT" />
+    <result column="call_cost" property="callCost" jdbcType="INTEGER" />
+    <result column="call_land_type" property="callLandType" jdbcType="CHAR" />
+    <result column="call_long_distance" property="callLongDistance" jdbcType="INTEGER" />
+    <result column="call_type_name" property="callTypeName" jdbcType="CHAR" />
+    <result column="call_roam_cost" property="callRoamCost" jdbcType="BIGINT" />
+    <result column="call_other_number" property="callOtherNumber" jdbcType="CHAR" />
+    <result column="call_start_time" property="callStartTime" jdbcType="INTEGER" />
+    <result column="call_discount" property="callDiscount" jdbcType="INTEGER" />
+    <result column="call_address" property="callAddress" jdbcType="CHAR" />
+    <result column="call_time" property="callTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, callinfoid, mymobile, call_cost, call_land_type, call_long_distance, call_type_name, 
+    call_roam_cost, call_other_number, call_start_time, call_discount, call_address, 
+    call_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from a_test_mobilecall
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from a_test_mobilecall
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.TestMobilecall" >
+    insert into a_test_mobilecall (id, callinfoid, mymobile, 
+      call_cost, call_land_type, call_long_distance, 
+      call_type_name, call_roam_cost, call_other_number, 
+      call_start_time, call_discount, call_address, 
+      call_time)
+    values (#{id,jdbcType=INTEGER}, #{callinfoid,jdbcType=INTEGER}, #{mymobile,jdbcType=BIGINT}, 
+      #{callCost,jdbcType=INTEGER}, #{callLandType,jdbcType=CHAR}, #{callLongDistance,jdbcType=INTEGER}, 
+      #{callTypeName,jdbcType=CHAR}, #{callRoamCost,jdbcType=BIGINT}, #{callOtherNumber,jdbcType=CHAR}, 
+      #{callStartTime,jdbcType=INTEGER}, #{callDiscount,jdbcType=INTEGER}, #{callAddress,jdbcType=CHAR}, 
+      #{callTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.TestMobilecall" >
+    insert into a_test_mobilecall
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="callinfoid != null" >
+        callinfoid,
+      </if>
+      <if test="mymobile != null" >
+        mymobile,
+      </if>
+      <if test="callCost != null" >
+        call_cost,
+      </if>
+      <if test="callLandType != null" >
+        call_land_type,
+      </if>
+      <if test="callLongDistance != null" >
+        call_long_distance,
+      </if>
+      <if test="callTypeName != null" >
+        call_type_name,
+      </if>
+      <if test="callRoamCost != null" >
+        call_roam_cost,
+      </if>
+      <if test="callOtherNumber != null" >
+        call_other_number,
+      </if>
+      <if test="callStartTime != null" >
+        call_start_time,
+      </if>
+      <if test="callDiscount != null" >
+        call_discount,
+      </if>
+      <if test="callAddress != null" >
+        call_address,
+      </if>
+      <if test="callTime != null" >
+        call_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="callinfoid != null" >
+        #{callinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="mymobile != null" >
+        #{mymobile,jdbcType=BIGINT},
+      </if>
+      <if test="callCost != null" >
+        #{callCost,jdbcType=INTEGER},
+      </if>
+      <if test="callLandType != null" >
+        #{callLandType,jdbcType=CHAR},
+      </if>
+      <if test="callLongDistance != null" >
+        #{callLongDistance,jdbcType=INTEGER},
+      </if>
+      <if test="callTypeName != null" >
+        #{callTypeName,jdbcType=CHAR},
+      </if>
+      <if test="callRoamCost != null" >
+        #{callRoamCost,jdbcType=BIGINT},
+      </if>
+      <if test="callOtherNumber != null" >
+        #{callOtherNumber,jdbcType=CHAR},
+      </if>
+      <if test="callStartTime != null" >
+        #{callStartTime,jdbcType=INTEGER},
+      </if>
+      <if test="callDiscount != null" >
+        #{callDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="callAddress != null" >
+        #{callAddress,jdbcType=CHAR},
+      </if>
+      <if test="callTime != null" >
+        #{callTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.TestMobilecall" >
+    update a_test_mobilecall
+    <set >
+      <if test="callinfoid != null" >
+        callinfoid = #{callinfoid,jdbcType=INTEGER},
+      </if>
+      <if test="mymobile != null" >
+        mymobile = #{mymobile,jdbcType=BIGINT},
+      </if>
+      <if test="callCost != null" >
+        call_cost = #{callCost,jdbcType=INTEGER},
+      </if>
+      <if test="callLandType != null" >
+        call_land_type = #{callLandType,jdbcType=CHAR},
+      </if>
+      <if test="callLongDistance != null" >
+        call_long_distance = #{callLongDistance,jdbcType=INTEGER},
+      </if>
+      <if test="callTypeName != null" >
+        call_type_name = #{callTypeName,jdbcType=CHAR},
+      </if>
+      <if test="callRoamCost != null" >
+        call_roam_cost = #{callRoamCost,jdbcType=BIGINT},
+      </if>
+      <if test="callOtherNumber != null" >
+        call_other_number = #{callOtherNumber,jdbcType=CHAR},
+      </if>
+      <if test="callStartTime != null" >
+        call_start_time = #{callStartTime,jdbcType=INTEGER},
+      </if>
+      <if test="callDiscount != null" >
+        call_discount = #{callDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="callAddress != null" >
+        call_address = #{callAddress,jdbcType=CHAR},
+      </if>
+      <if test="callTime != null" >
+        call_time = #{callTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.TestMobilecall" >
+    update a_test_mobilecall
+    set callinfoid = #{callinfoid,jdbcType=INTEGER},
+      mymobile = #{mymobile,jdbcType=BIGINT},
+      call_cost = #{callCost,jdbcType=INTEGER},
+      call_land_type = #{callLandType,jdbcType=CHAR},
+      call_long_distance = #{callLongDistance,jdbcType=INTEGER},
+      call_type_name = #{callTypeName,jdbcType=CHAR},
+      call_roam_cost = #{callRoamCost,jdbcType=BIGINT},
+      call_other_number = #{callOtherNumber,jdbcType=CHAR},
+      call_start_time = #{callStartTime,jdbcType=INTEGER},
+      call_discount = #{callDiscount,jdbcType=INTEGER},
+      call_address = #{callAddress,jdbcType=CHAR},
+      call_time = #{callTime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectCallCountByMyMobile" parameterType="long" resultType="map">
+  	select call_other_number,count(*)as counts from dxd_fk.a_test_mobilecall where mymobile=#{mymobile} and call_type_name='被叫' and
+  	call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH))) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime}))) Group by call_other_number having counts&gt;1
+  </select>
+  
+  <select id="selectCallCountNo1ByMyMobile" parameterType="long" resultType="map">
+  	select call_other_number,count(*)as counts from dxd_fk.a_test_mobilecall where mymobile=#{mymobile} and 
+  	call_type_name='被叫' and call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH))) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime}))) Group by call_other_number
+  </select>
+  
+  <select id="selectAllCallCountByMyMobile" parameterType="long" resultType="map">
+  	select call_other_number,count(*)as counts from dxd_fk.a_test_mobilecall where mymobile=#{mymobile} and 
+  	call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH))) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime}))) Group by call_other_number
+  </select>
+  
+  <select id="selectMobileCallrecordByVid" resultMap="BaseResultMap" parameterType="long" >
+    select 
+    <include refid="Base_Column_List" />
+    from dxd_fk.a_test_mobilecall
+    where mymobile = #{mymobile}
+  </select>
+  
+  <select id="selectDateCallByMyMobile" resultType="map">
+  	select call_other_number,UNIX_TIMESTAMP(DATE(FROM_UNIXTIME((call_start_time))))as date_call from dxd_fk.a_test_mobilecall where mymobile=#{mymobile} and 
+  	call_type_name='被叫' and call_other_number=#{mobile} and call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH))) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime})))  Group by call_other_number,date_call ORDER BY date_call DESC
+  </select>
+  
+  <select id="selectAllDateCallByMyMobile" resultType="map">
+  	select call_other_number,UNIX_TIMESTAMP(DATE(FROM_UNIXTIME((call_start_time))))as date_call from dxd_fk.a_test_mobilecall where mymobile=#{mymobile} and 
+  	call_type_name='被叫' and 
+  	call_other_number=#{mobile} 
+    and call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH))) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime})))  Group by call_other_number,date_call ORDER BY call_other_number,date_call DESC
+  </select>
+  
+  <select id="selectCallTop3ByMobile" parameterType="long" resultType="map">
+	SELECT call_other_number,count(*) as call_count,sum(call_time) as call_time,count(if(call_start_time>=#{week_time},1,null)) as 
+	call_count_week,count(if(call_start_time>=#{one_month_time},1,null)) as call_count_one_month,count(if(call_start_time>=#{three_month_time},1,null)) as 
+	call_count_three_month FROM  dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} GROUP BY call_other_number ORDER BY call_count desc LIMIT 3
+</select>
+	
+  <select id="selectCallTimeByMyMobile" parameterType="long" resultType="java.lang.Long">
+  	select UNIX_TIMESTAMP(DATE(FROM_UNIXTIME((call_start_time))))as date_call from dxd_fk.a_test_mobilecall where mymobile=#{mymobile}  
+  	and call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH))) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime})))  Group by date_call ORDER BY date_call DESC
+  </select>
+  
+  <select id="selectCallNightByMyMobile" parameterType="long" resultType="map">
+  	SELECT count(a.id)as counts,b.all_counts FROM dxd_fk.a_test_mobilecall a LEFT JOIN( SELECT mymobile,count(id)as all_counts FROM 
+  	dxd_fk.a_test_mobilecall WHERE call_start_time&gt;=UNIX_TIMESTAMP(SUBDATE(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH)) and 
+  	call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime}))) and mymobile=#{mymobile} GROUP BY mymobile ) b ON b.mymobile=a.mymobile WHERE 
+  	a.call_start_time&gt;=UNIX_TIMESTAMP(SUBDATE(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 3 MONTH)) and a.call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime}))) and 
+  	a.mymobile=#{mymobile} AND (HOUR(FROM_UNIXTIME(a.call_start_time))&gt;=0 AND HOUR(FROM_UNIXTIME(a.call_start_time))&lt;=5) GROUP BY a.mymobile
+  </select>
+  
+  <select id="selectK0013MobilesByMymobile" parameterType="long" resultType="string">
+	Select a.call_other_number from (select call_other_number,call_start_time,count(if(call_type_name='主叫',1,null)) as call_count_action,count(if(call_type_name='被叫',1,null)) as call_count_passive from dxd_fk.a_test_mobilecall
+	where mymobile=#{mymobile} and call_start_time>(
+	SELECT max(call_start_time) FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile}
+	)-86400*90 GROUP BY call_other_number HAVING call_count_action=0 AND call_count_passive>=2) a where length(a.call_other_number) not in (5)
+  </select>
+  
+  <select id="selectK0013TimesByMymobileAndCallOtherNumber" resultType="int">
+	SELECT DISTINCT(call_start_time) FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} and call_other_number=#{callOtherNumber} AND call_type_name='被叫' ORDER BY call_start_time
+  </select>
+  
+  <select id="selectCuiShouBjCount" resultType="int">
+  	SELECT COUNT(*) FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} AND call_type_name='被叫' 
+  		AND call_other_number IN 
+	  	<foreach collection="mobiles" item="mobiles" index="index" open="(" close=")" separator=",">
+	      #{mobiles}
+	    </foreach>
+  </select>
+  
+  <select id="selectCuiShouNumberInCall" resultType="string">
+  	SELECT call_other_number FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} AND call_other_number IN 
+  	<foreach collection="mobiles" item="mobiles" index="index" open="(" close=")" separator=",">
+      #{mobiles}
+    </foreach>
+  	 GROUP BY call_other_number
+  </select>
+  
+  <select id="selectYsCuiShouCount" resultType="int">
+  	SELECT COUNT(*) FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} AND call_other_number IN 
+	  	<foreach collection="mobiles" item="mobiles" index="index" open="(" close=")" separator=",">
+	      #{mobiles}
+	    </foreach>
+  </select>
+  
+  <select id="selectBinCallAMaxDaysM1" parameterType="long" resultType="java.lang.Long">
+  	select UNIX_TIMESTAMP(DATE(FROM_UNIXTIME((call_start_time))))as date_call from dxd_fk.a_test_mobilecall where mymobile=#{mymobile}  and 
+  	call_start_time&gt;=UNIX_TIMESTAMP((DATE_SUB(DATE(FROM_UNIXTIME(#{ctime})),INTERVAL 1 MONTH))) and call_start_time&lt;UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(#{ctime}))) 
+  	Group by date_call ORDER BY date_call DESC
+  </select>
+  
+  <select id="selectBinCall30sRate" parameterType="long" resultType="java.lang.Double">
+  	SELECT b.l30_counts/c.all_counts FROM dxd_fk.a_test_mobilecall a LEFT JOIN (SELECT mymobile,count(DISTINCT call_start_time) as l30_counts 
+  	FROM dxd_fk.a_test_mobilecall WHERE call_time&lt;30 and mymobile=#{mymobile} GROUP BY mymobile) b on b.mymobile=a.mymobile  
+  	LEFT JOIN (SELECT mymobile,count(DISTINCT call_start_time) as all_counts FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} GROUP BY mymobile) 
+  	c on c.mymobile=a.mymobile  WHERE a.mymobile=#{mymobile} LIMIT 1
+  </select>
+  
+  <select id="selectBinCallNightRate" parameterType="long" resultType="java.lang.Double">
+  	SELECT b.n_counts/c.all_counts FROM dxd_fk.a_test_mobilecall a LEFT JOIN (SELECT mymobile,count(DISTINCT call_start_time) as n_counts 
+  	FROM dxd_fk.a_test_mobilecall WHERE (HOUR(FROM_UNIXTIME(call_start_time))&gt;=0 AND HOUR(FROM_UNIXTIME(call_start_time))&lt;=5 or 
+  	HOUR(FROM_UNIXTIME(call_start_time))=23 ) and  mymobile=#{mymobile} GROUP BY mymobile) b on b.mymobile=a.mymobile  LEFT JOIN 
+  	(SELECT mymobile,count(DISTINCT call_start_time) as all_counts FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} GROUP BY mymobile) c 
+  	on c.mymobile=a.mymobile  WHERE a.mymobile=#{mymobile} LIMIT 1
+  </select>
+  
+  <select id="selectNumber11ByMyMobile" parameterType="long" resultType="string">
+  	SELECT call_other_number FROM dxd_fk.a_test_mobilecall WHERE mymobile=#{mymobile} AND call_other_number LIKE '1%' AND  LENGTH(call_other_number)=11 GROUP BY call_other_number
+  </select>
+</mapper>

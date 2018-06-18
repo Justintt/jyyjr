@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.AbnormNumberMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.AbnormNumber" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="from_user_vid" property="fromUserVid" jdbcType="VARCHAR" />
+    <result column="from_user_mobile" property="fromUserMobile" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, number, ctime, from_user_vid, from_user_mobile
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from abnorm_number
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from abnorm_number
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.AbnormNumber" >
+    insert into abnorm_number (id, number, ctime, 
+      from_user_vid, from_user_mobile)
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{ctime,jdbcType=INTEGER}, 
+      #{fromUserVid,jdbcType=VARCHAR}, #{fromUserMobile,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.AbnormNumber" >
+    insert into abnorm_number
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="fromUserVid != null" >
+        from_user_vid,
+      </if>
+      <if test="fromUserMobile != null" >
+        from_user_mobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="fromUserVid != null" >
+        #{fromUserVid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUserMobile != null" >
+        #{fromUserMobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.AbnormNumber" >
+    update abnorm_number
+    <set >
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="fromUserVid != null" >
+        from_user_vid = #{fromUserVid,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUserMobile != null" >
+        from_user_mobile = #{fromUserMobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.AbnormNumber" >
+    update abnorm_number
+    set number = #{number,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=INTEGER},
+      from_user_vid = #{fromUserVid,jdbcType=VARCHAR},
+      from_user_mobile = #{fromUserMobile,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectMixCounts" resultType="string">
+  	SELECT number FROM dxd_fk.abnorm_number WHERE number IN 
+  		<foreach collection="mobiles" item="mobiles" index="index" open="(" close=")" separator=",">
+	      #{mobiles}
+	    </foreach>
+  	 GROUP BY number
+  </select>
+</mapper>

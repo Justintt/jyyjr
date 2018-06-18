@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.TdTbOrderListMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.TdTbOrderList" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="order_id" property="orderId" jdbcType="CHAR" />
+    <result column="order_time" property="orderTime" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="CHAR" />
+    <result column="order_amount" property="orderAmount" jdbcType="INTEGER" />
+    <result column="order_type" property="orderType" jdbcType="CHAR" />
+    <result column="order_shop" property="orderShop" jdbcType="CHAR" />
+    <result column="receiver_name" property="receiverName" jdbcType="CHAR" />
+    <result column="receiver_telephone" property="receiverTelephone" jdbcType="CHAR" />
+    <result column="receiver_mobile" property="receiverMobile" jdbcType="CHAR" />
+    <result column="receiver_addr" property="receiverAddr" jdbcType="CHAR" />
+    <result column="receiver_zipCode" property="receiverZipcode" jdbcType="INTEGER" />
+    <result column="receipt_title" property="receiptTitle" jdbcType="CHAR" />
+    <result column="receipt_type" property="receiptType" jdbcType="CHAR" />
+    <result column="receipt_content" property="receiptContent" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, order_id, order_time, order_status, order_amount, order_type, order_shop, 
+    receiver_name, receiver_telephone, receiver_mobile, receiver_addr, receiver_zipCode, 
+    receipt_title, receipt_type, receipt_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_tb_order_list
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from td_tb_order_list
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.TdTbOrderList" >
+    insert into td_tb_order_list (id, vid, order_id, order_time, 
+      order_status, order_amount, order_type, 
+      order_shop, receiver_name, receiver_telephone, 
+      receiver_mobile, receiver_addr, receiver_zipCode, 
+      receipt_title, receipt_type, receipt_content
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{orderId,jdbcType=CHAR}, #{orderTime,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=CHAR}, #{orderAmount,jdbcType=INTEGER}, #{orderType,jdbcType=CHAR}, 
+      #{orderShop,jdbcType=CHAR}, #{receiverName,jdbcType=CHAR}, #{receiverTelephone,jdbcType=CHAR}, 
+      #{receiverMobile,jdbcType=CHAR}, #{receiverAddr,jdbcType=CHAR}, #{receiverZipcode,jdbcType=INTEGER}, 
+      #{receiptTitle,jdbcType=CHAR}, #{receiptType,jdbcType=CHAR}, #{receiptContent,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.TdTbOrderList" >
+    insert into td_tb_order_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderTime != null" >
+        order_time,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderAmount != null" >
+        order_amount,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="orderShop != null" >
+        order_shop,
+      </if>
+      <if test="receiverName != null" >
+        receiver_name,
+      </if>
+      <if test="receiverTelephone != null" >
+        receiver_telephone,
+      </if>
+      <if test="receiverMobile != null" >
+        receiver_mobile,
+      </if>
+      <if test="receiverAddr != null" >
+        receiver_addr,
+      </if>
+      <if test="receiverZipcode != null" >
+        receiver_zipCode,
+      </if>
+      <if test="receiptTitle != null" >
+        receipt_title,
+      </if>
+      <if test="receiptType != null" >
+        receipt_type,
+      </if>
+      <if test="receiptContent != null" >
+        receipt_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="orderAmount != null" >
+        #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="orderShop != null" >
+        #{orderShop,jdbcType=CHAR},
+      </if>
+      <if test="receiverName != null" >
+        #{receiverName,jdbcType=CHAR},
+      </if>
+      <if test="receiverTelephone != null" >
+        #{receiverTelephone,jdbcType=CHAR},
+      </if>
+      <if test="receiverMobile != null" >
+        #{receiverMobile,jdbcType=CHAR},
+      </if>
+      <if test="receiverAddr != null" >
+        #{receiverAddr,jdbcType=CHAR},
+      </if>
+      <if test="receiverZipcode != null" >
+        #{receiverZipcode,jdbcType=INTEGER},
+      </if>
+      <if test="receiptTitle != null" >
+        #{receiptTitle,jdbcType=CHAR},
+      </if>
+      <if test="receiptType != null" >
+        #{receiptType,jdbcType=CHAR},
+      </if>
+      <if test="receiptContent != null" >
+        #{receiptContent,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.TdTbOrderList" >
+    update td_tb_order_list
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="orderAmount != null" >
+        order_amount = #{orderAmount,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="orderShop != null" >
+        order_shop = #{orderShop,jdbcType=CHAR},
+      </if>
+      <if test="receiverName != null" >
+        receiver_name = #{receiverName,jdbcType=CHAR},
+      </if>
+      <if test="receiverTelephone != null" >
+        receiver_telephone = #{receiverTelephone,jdbcType=CHAR},
+      </if>
+      <if test="receiverMobile != null" >
+        receiver_mobile = #{receiverMobile,jdbcType=CHAR},
+      </if>
+      <if test="receiverAddr != null" >
+        receiver_addr = #{receiverAddr,jdbcType=CHAR},
+      </if>
+      <if test="receiverZipcode != null" >
+        receiver_zipCode = #{receiverZipcode,jdbcType=INTEGER},
+      </if>
+      <if test="receiptTitle != null" >
+        receipt_title = #{receiptTitle,jdbcType=CHAR},
+      </if>
+      <if test="receiptType != null" >
+        receipt_type = #{receiptType,jdbcType=CHAR},
+      </if>
+      <if test="receiptContent != null" >
+        receipt_content = #{receiptContent,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.TdTbOrderList" >
+    update td_tb_order_list
+    set vid = #{vid,jdbcType=CHAR},
+      order_id = #{orderId,jdbcType=CHAR},
+      order_time = #{orderTime,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=CHAR},
+      order_amount = #{orderAmount,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=CHAR},
+      order_shop = #{orderShop,jdbcType=CHAR},
+      receiver_name = #{receiverName,jdbcType=CHAR},
+      receiver_telephone = #{receiverTelephone,jdbcType=CHAR},
+      receiver_mobile = #{receiverMobile,jdbcType=CHAR},
+      receiver_addr = #{receiverAddr,jdbcType=CHAR},
+      receiver_zipCode = #{receiverZipcode,jdbcType=INTEGER},
+      receipt_title = #{receiptTitle,jdbcType=CHAR},
+      receipt_type = #{receiptType,jdbcType=CHAR},
+      receipt_content = #{receiptContent,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getOrderListMoneyCount" parameterType="string" resultType="java.lang.Double">
+  	SELECT SUM(order_amount)/100 order_amount FROM jyy_fk_db.td_tb_order_list WHERE vid=#{vid} AND order_status LIKE '%成功%'
+  </select>
+  
+  <select id="queryOrderTimeByVid" parameterType="string" resultType="map">
+		SELECT min(order_time) as min_time,MAX(order_time) as max_time FROM jyy_fk_db.td_tb_order_list 
+		WHERE  order_status like '%成功%' and vid=#{vid}
+	</select>
+</mapper>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.csdao.Yy20180521DataMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.Yy20180521Data" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="is_ar_report" property="isArReport" jdbcType="INTEGER" />
+    <result column="is_qh_user_risk" property="isQhUserRisk" jdbcType="INTEGER" />
+    <result column="is_qh_user_risk_hint" property="isQhUserRiskHint" jdbcType="INTEGER" />
+    <result column="is_qh_user_loan_platform" property="isQhUserLoanPlatform" jdbcType="INTEGER" />
+    <result column="is_qh_user_reliability_2b" property="isQhUserReliability2b" jdbcType="INTEGER" />
+    <result column="is_qh_user_credit_track" property="isQhUserCreditTrack" jdbcType="INTEGER" />
+    <result column="td_7days" property="td7days" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="is_call_density" property="isCallDensity" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="is_call_density_avgw" property="isCallDensityAvgw" jdbcType="VARCHAR" />
+    <result column="is_call_density_avgm" property="isCallDensityAvgm" jdbcType="VARCHAR" />
+    <result column="is_call_density_avg3m" property="isCallDensityAvg3m" jdbcType="VARCHAR" />
+    <result column="bin_call_scilence_3d_m3" property="binCallScilence3dM3" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, mobile, is_ar_report, is_qh_user_risk, is_qh_user_risk_hint, is_qh_user_loan_platform, 
+    is_qh_user_reliability_2b, is_qh_user_credit_track, td_7days, ctime, is_call_density, 
+    age, is_call_density_avgw, is_call_density_avgm, is_call_density_avg3m, bin_call_scilence_3d_m3
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from 20180521_yy_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from 20180521_yy_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.Yy20180521Data" >
+    insert into 20180521_yy_data (id, vid, mobile, 
+      is_ar_report, is_qh_user_risk, is_qh_user_risk_hint, 
+      is_qh_user_loan_platform, is_qh_user_reliability_2b, 
+      is_qh_user_credit_track, td_7days, ctime, 
+      is_call_density, age, is_call_density_avgw, 
+      is_call_density_avgm, is_call_density_avg3m, 
+      bin_call_scilence_3d_m3)
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{isArReport,jdbcType=INTEGER}, #{isQhUserRisk,jdbcType=INTEGER}, #{isQhUserRiskHint,jdbcType=INTEGER}, 
+      #{isQhUserLoanPlatform,jdbcType=INTEGER}, #{isQhUserReliability2b,jdbcType=INTEGER}, 
+      #{isQhUserCreditTrack,jdbcType=INTEGER}, #{td7days,jdbcType=INTEGER}, #{ctime,jdbcType=INTEGER}, 
+      #{isCallDensity,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{isCallDensityAvgw,jdbcType=VARCHAR}, 
+      #{isCallDensityAvgm,jdbcType=VARCHAR}, #{isCallDensityAvg3m,jdbcType=VARCHAR}, 
+      #{binCallScilence3dM3,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.Yy20180521Data" >
+    insert into 20180521_yy_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="isArReport != null" >
+        is_ar_report,
+      </if>
+      <if test="isQhUserRisk != null" >
+        is_qh_user_risk,
+      </if>
+      <if test="isQhUserRiskHint != null" >
+        is_qh_user_risk_hint,
+      </if>
+      <if test="isQhUserLoanPlatform != null" >
+        is_qh_user_loan_platform,
+      </if>
+      <if test="isQhUserReliability2b != null" >
+        is_qh_user_reliability_2b,
+      </if>
+      <if test="isQhUserCreditTrack != null" >
+        is_qh_user_credit_track,
+      </if>
+      <if test="td7days != null" >
+        td_7days,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="isCallDensity != null" >
+        is_call_density,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="isCallDensityAvgw != null" >
+        is_call_density_avgw,
+      </if>
+      <if test="isCallDensityAvgm != null" >
+        is_call_density_avgm,
+      </if>
+      <if test="isCallDensityAvg3m != null" >
+        is_call_density_avg3m,
+      </if>
+      <if test="binCallScilence3dM3 != null" >
+        bin_call_scilence_3d_m3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isArReport != null" >
+        #{isArReport,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserRisk != null" >
+        #{isQhUserRisk,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserRiskHint != null" >
+        #{isQhUserRiskHint,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserLoanPlatform != null" >
+        #{isQhUserLoanPlatform,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserReliability2b != null" >
+        #{isQhUserReliability2b,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserCreditTrack != null" >
+        #{isQhUserCreditTrack,jdbcType=INTEGER},
+      </if>
+      <if test="td7days != null" >
+        #{td7days,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="isCallDensity != null" >
+        #{isCallDensity,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="isCallDensityAvgw != null" >
+        #{isCallDensityAvgw,jdbcType=VARCHAR},
+      </if>
+      <if test="isCallDensityAvgm != null" >
+        #{isCallDensityAvgm,jdbcType=VARCHAR},
+      </if>
+      <if test="isCallDensityAvg3m != null" >
+        #{isCallDensityAvg3m,jdbcType=VARCHAR},
+      </if>
+      <if test="binCallScilence3dM3 != null" >
+        #{binCallScilence3dM3,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.Yy20180521Data" >
+    update dxd_fk.20180521_yy_data
+    <set >
+      <!-- <if test="vid != null" >
+        vid = #{vid,jdbcType=VARCHAR},
+      </if> -->
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isArReport != null" >
+        is_ar_report = #{isArReport,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserRisk != null" >
+        is_qh_user_risk = #{isQhUserRisk,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserRiskHint != null" >
+        is_qh_user_risk_hint = #{isQhUserRiskHint,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserLoanPlatform != null" >
+        is_qh_user_loan_platform = #{isQhUserLoanPlatform,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserReliability2b != null" >
+        is_qh_user_reliability_2b = #{isQhUserReliability2b,jdbcType=INTEGER},
+      </if>
+      <if test="isQhUserCreditTrack != null" >
+        is_qh_user_credit_track = #{isQhUserCreditTrack,jdbcType=INTEGER},
+      </if>
+      <if test="td7days != null" >
+        td_7days = #{td7days,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="isCallDensity != null" >
+        is_call_density = #{isCallDensity,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="isCallDensityAvgw != null" >
+        is_call_density_avgw = #{isCallDensityAvgw,jdbcType=VARCHAR},
+      </if>
+      <if test="isCallDensityAvgm != null" >
+        is_call_density_avgm = #{isCallDensityAvgm,jdbcType=VARCHAR},
+      </if>
+      <if test="isCallDensityAvg3m != null" >
+        is_call_density_avg3m = #{isCallDensityAvg3m,jdbcType=VARCHAR},
+      </if>
+      <if test="binCallScilence3dM3 != null" >
+        bin_call_scilence_3d_m3 = #{binCallScilence3dM3,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vid = #{vid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.Yy20180521Data" >
+    update 20180521_yy_data
+    set vid = #{vid,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      is_ar_report = #{isArReport,jdbcType=INTEGER},
+      is_qh_user_risk = #{isQhUserRisk,jdbcType=INTEGER},
+      is_qh_user_risk_hint = #{isQhUserRiskHint,jdbcType=INTEGER},
+      is_qh_user_loan_platform = #{isQhUserLoanPlatform,jdbcType=INTEGER},
+      is_qh_user_reliability_2b = #{isQhUserReliability2b,jdbcType=INTEGER},
+      is_qh_user_credit_track = #{isQhUserCreditTrack,jdbcType=INTEGER},
+      td_7days = #{td7days,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=INTEGER},
+      is_call_density = #{isCallDensity,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      is_call_density_avgw = #{isCallDensityAvgw,jdbcType=VARCHAR},
+      is_call_density_avgm = #{isCallDensityAvgm,jdbcType=VARCHAR},
+      is_call_density_avg3m = #{isCallDensityAvg3m,jdbcType=VARCHAR},
+      bin_call_scilence_3d_m3 = #{binCallScilence3dM3,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

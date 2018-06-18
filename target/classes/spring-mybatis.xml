@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- 1.引入属性文件 -->
+    <context:property-placeholder location="classpath:db.properties" />
+
+    <!-- 2.自动扫描service包(自动注入) -->
+    <context:component-scan base-package="com.jyyjr.service" />
+
+    <!-- ========================================配置数据源========================================= -->
+    
+    <!-- 通讯记录库 （这种方式是配置的连接不具有连接池）-->
+    <bean id="dataSource_tx" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>${jdbc.url_tx}</value>
+        </property>
+        <property name="username">
+            <value>${jdbc.username_tx}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc.password_tx}</value>
+        </property>
+    </bean>
+    <!-- 只读业务库 -->
+    <bean id="dataSource_yw" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <!--驱动类名 -->
+        <property name="driverClass" value="${jdbc.driver}" />
+        <!-- url -->
+        <property name="jdbcUrl" value="${jdbc.url_yw}" />
+        <!-- 用户名 -->
+        <property name="user" value="${jdbc.username_yw}" />
+        <!-- 密码 -->
+        <property name="password" value="${jdbc.password_yw}" />
+        <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <!-- 初始连接池大小 -->
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <!-- 连接池中连接最小个数 -->
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <!-- 连接池中连接最大个数 -->
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <!-- 管理连接池的大小和连接的生存时间 -->
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <!-- 每900秒检查所有连接池中的空闲连接 -->
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    <!-- 征信库 -->
+    <bean id="dataSource_zx" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url_zx}" />
+        <property name="user" value="${jdbc.username_zx}" />
+        <property name="password" value="${jdbc.password_zx}" />
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    <!-- 测试库 -->
+    <bean id="dataSource_cs" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url_cs}" />
+        <property name="user" value="${jdbc.username_cs}" />
+        <property name="password" value="${jdbc.password_cs}" />
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    <!-- 读写业务库 -->
+    <bean id="dataSource_dxyw" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url_dxyw}" />
+        <property name="user" value="${jdbc.username_dxyw}" />
+        <property name="password" value="${jdbc.password_dxyw}" />
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    <!-- 瑞安读写业务库 -->
+    <bean id="dataSource_radxyw" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url_radxyw}" />
+        <property name="user" value="${jdbc.username_radxyw}" />
+        <property name="password" value="${jdbc.password_radxyw}" />
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    <!-- 即刻读写业务库 -->
+    <bean id="dataSource_jkdxyw" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url_jkdxyw}" />
+        <property name="user" value="${jdbc.username_jkdxyw}" />
+        <property name="password" value="${jdbc.password_jkdxyw}" />
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    <!-- 马甲读写业务库 -->
+    <bean id="dataSource_mjdxyw" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="jdbcUrl" value="${jdbc.url_mjdxyw}" />
+        <property name="user" value="${jdbc.username_mjdxyw}" />
+        <property name="password" value="${jdbc.password_mjdxyw}" />
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"></property>
+        <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"></property>
+    </bean>
+    
+    
+    <!-- 配置不同数据源扫描不同的dao和xml -->
+    <!-- 只读业务库 -->
+    <bean id="sqlSessionFactory_yw" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_yw" />
+        <property name="mapperLocations" value="classpath:mapper/yw/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.ywdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_yw" />
+    </bean>
+    <!-- 读写业务库 -->
+    <bean id="sqlSessionFactory_dxyw" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_dxyw" />
+        <property name="mapperLocations" value="classpath:mapper/dxyw/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.dxywdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_dxyw" />
+    </bean>
+    <!-- 征信库 -->
+    <bean id="sqlSessionFactory_zx" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_zx" />
+        <property name="mapperLocations" value="classpath:mapper/zx/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.zxdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_zx" />
+    </bean>
+    <!-- 测试库 -->
+    <bean id="sqlSessionFactory_cs" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_cs" />
+        <property name="mapperLocations" value="classpath:mapper/cs/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.csdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_cs" />
+    </bean>
+    <!-- 通讯记录库 -->
+    <bean id="sqlSessionFactory_tx" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_tx" />
+        <property name="mapperLocations" value="classpath:mapper/tx/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.txdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_tx" />
+    </bean>
+    <!-- 瑞安读写业务库 -->
+    <bean id="sqlSessionFactory_radxyw" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_radxyw" />
+        <property name="mapperLocations" value="classpath:mapper/radxyw/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.radxywdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_radxyw" />
+    </bean>
+    <!-- 即刻读写业务库 -->
+    <bean id="sqlSessionFactory_jkdxyw" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_jkdxyw" />
+        <property name="mapperLocations" value="classpath:mapper/jkdxyw/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.jkdxywdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_jkdxyw" />
+    </bean>
+    <!-- 马甲读写业务库 -->
+    <bean id="sqlSessionFactory_mjdxyw" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_jkdxyw" />
+        <property name="mapperLocations" value="classpath:mapper/mjdxyw/*.xml"></property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jyyjr.dao.mjdxywdao" />
+    	<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_mjdxyw" />
+    </bean>
+
+    <!-- ========================================配置事务============================== -->
+     <!-- 声明式事务管理 配置事物的注解方式注入  @Transactional("dxyw")-->
+    <tx:annotation-driven/>
+    <bean name="transactionManager_dxyw" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource_dxyw" />
+        <qualifier value="dxyw"/>
+    </bean>
+    
+    <bean name="transactionManager_cs" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource_cs" />
+        <qualifier value="cs"/>
+    </bean>
+    
+
+</beans>

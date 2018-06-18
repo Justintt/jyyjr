@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.RiskContactDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.RiskContactDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="call_count_holiday_3month" property="callCountHoliday3month" jdbcType="INTEGER" />
+    <result column="call_count_holiday_6month" property="callCountHoliday6month" jdbcType="INTEGER" />
+    <result column="call_count_active_6month" property="callCountActive6month" jdbcType="INTEGER" />
+    <result column="call_time_3month" property="callTime3month" jdbcType="INTEGER" />
+    <result column="msg_count_3month" property="msgCount3month" jdbcType="INTEGER" />
+    <result column="call_time_passive_6month" property="callTimePassive6month" jdbcType="INTEGER" />
+    <result column="call_time_1month" property="callTime1month" jdbcType="INTEGER" />
+    <result column="call_count_active_3month" property="callCountActive3month" jdbcType="INTEGER" />
+    <result column="call_time_6month" property="callTime6month" jdbcType="INTEGER" />
+    <result column="contact_type" property="contactType" jdbcType="CHAR" />
+    <result column="call_count_late_night_3month" property="callCountLateNight3month" jdbcType="INTEGER" />
+    <result column="call_count_late_night_6month" property="callCountLateNight6month" jdbcType="INTEGER" />
+    <result column="call_count_passive_6month" property="callCountPassive6month" jdbcType="INTEGER" />
+    <result column="call_time_active_6month" property="callTimeActive6month" jdbcType="INTEGER" />
+    <result column="msg_count_6month" property="msgCount6month" jdbcType="INTEGER" />
+    <result column="call_count_work_time_6month" property="callCountWorkTime6month" jdbcType="INTEGER" />
+    <result column="first_time_call_6month" property="firstTimeCall6month" jdbcType="INTEGER" />
+    <result column="call_time_active_3month" property="callTimeActive3month" jdbcType="INTEGER" />
+    <result column="call_count_passive_3month" property="callCountPassive3month" jdbcType="INTEGER" />
+    <result column="call_count_3month" property="callCount3month" jdbcType="INTEGER" />
+    <result column="contact_name" property="contactName" jdbcType="CHAR" />
+    <result column="contact_relation" property="contactRelation" jdbcType="CHAR" />
+    <result column="call_count_work_time_3month" property="callCountWorkTime3month" jdbcType="INTEGER" />
+    <result column="call_count_workday_3month" property="callCountWorkday3month" jdbcType="INTEGER" />
+    <result column="call_count_6month" property="callCount6month" jdbcType="INTEGER" />
+    <result column="call_count_offwork_time_3month" property="callCountOffworkTime3month" jdbcType="INTEGER" />
+    <result column="call_count_offwork_time_6month" property="callCountOffworkTime6month" jdbcType="INTEGER" />
+    <result column="contact_number" property="contactNumber" jdbcType="BIGINT" />
+    <result column="contact_area" property="contactArea" jdbcType="CHAR" />
+    <result column="call_count_1week" property="callCount1week" jdbcType="INTEGER" />
+    <result column="contact_seq_no" property="contactSeqNo" jdbcType="INTEGER" />
+    <result column="is_whole_day_call_3month" property="isWholeDayCall3month" jdbcType="CHAR" />
+    <result column="call_count_1month" property="callCount1month" jdbcType="INTEGER" />
+    <result column="call_time_passive_3month" property="callTimePassive3month" jdbcType="INTEGER" />
+    <result column="is_whole_day_call_6month" property="isWholeDayCall6month" jdbcType="CHAR" />
+    <result column="call_count_workday_6month" property="callCountWorkday6month" jdbcType="INTEGER" />
+    <result column="last_time_call_6month" property="lastTimeCall6month" jdbcType="INTEGER" />
+    <result column="msg_count_1month" property="msgCount1month" jdbcType="INTEGER" />
+    <result column="contact_attribute" property="contactAttribute" jdbcType="CHAR" />
+    <result column="is_virtual_number" property="isVirtualNumber" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, call_count_holiday_3month, call_count_holiday_6month, call_count_active_6month, 
+    call_time_3month, msg_count_3month, call_time_passive_6month, call_time_1month, call_count_active_3month, 
+    call_time_6month, contact_type, call_count_late_night_3month, call_count_late_night_6month, 
+    call_count_passive_6month, call_time_active_6month, msg_count_6month, call_count_work_time_6month, 
+    first_time_call_6month, call_time_active_3month, call_count_passive_3month, call_count_3month, 
+    contact_name, contact_relation, call_count_work_time_3month, call_count_workday_3month, 
+    call_count_6month, call_count_offwork_time_3month, call_count_offwork_time_6month, 
+    contact_number, contact_area, call_count_1week, contact_seq_no, is_whole_day_call_3month, 
+    call_count_1month, call_time_passive_3month, is_whole_day_call_6month, call_count_workday_6month, 
+    last_time_call_6month, msg_count_1month, contact_attribute, is_virtual_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from risk_contact_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from risk_contact_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.RiskContactDetail" >
+    insert into risk_contact_detail (id, vid, call_count_holiday_3month, 
+      call_count_holiday_6month, call_count_active_6month, 
+      call_time_3month, msg_count_3month, call_time_passive_6month, 
+      call_time_1month, call_count_active_3month, 
+      call_time_6month, contact_type, call_count_late_night_3month, 
+      call_count_late_night_6month, call_count_passive_6month, 
+      call_time_active_6month, msg_count_6month, call_count_work_time_6month, 
+      first_time_call_6month, call_time_active_3month, 
+      call_count_passive_3month, call_count_3month, 
+      contact_name, contact_relation, call_count_work_time_3month, 
+      call_count_workday_3month, call_count_6month, 
+      call_count_offwork_time_3month, call_count_offwork_time_6month, 
+      contact_number, contact_area, call_count_1week, 
+      contact_seq_no, is_whole_day_call_3month, call_count_1month, 
+      call_time_passive_3month, is_whole_day_call_6month, 
+      call_count_workday_6month, last_time_call_6month, 
+      msg_count_1month, contact_attribute, is_virtual_number
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{callCountHoliday3month,jdbcType=INTEGER}, 
+      #{callCountHoliday6month,jdbcType=INTEGER}, #{callCountActive6month,jdbcType=INTEGER}, 
+      #{callTime3month,jdbcType=INTEGER}, #{msgCount3month,jdbcType=INTEGER}, #{callTimePassive6month,jdbcType=INTEGER}, 
+      #{callTime1month,jdbcType=INTEGER}, #{callCountActive3month,jdbcType=INTEGER}, 
+      #{callTime6month,jdbcType=INTEGER}, #{contactType,jdbcType=CHAR}, #{callCountLateNight3month,jdbcType=INTEGER}, 
+      #{callCountLateNight6month,jdbcType=INTEGER}, #{callCountPassive6month,jdbcType=INTEGER}, 
+      #{callTimeActive6month,jdbcType=INTEGER}, #{msgCount6month,jdbcType=INTEGER}, #{callCountWorkTime6month,jdbcType=INTEGER}, 
+      #{firstTimeCall6month,jdbcType=INTEGER}, #{callTimeActive3month,jdbcType=INTEGER}, 
+      #{callCountPassive3month,jdbcType=INTEGER}, #{callCount3month,jdbcType=INTEGER}, 
+      #{contactName,jdbcType=CHAR}, #{contactRelation,jdbcType=CHAR}, #{callCountWorkTime3month,jdbcType=INTEGER}, 
+      #{callCountWorkday3month,jdbcType=INTEGER}, #{callCount6month,jdbcType=INTEGER}, 
+      #{callCountOffworkTime3month,jdbcType=INTEGER}, #{callCountOffworkTime6month,jdbcType=INTEGER}, 
+      #{contactNumber,jdbcType=BIGINT}, #{contactArea,jdbcType=CHAR}, #{callCount1week,jdbcType=INTEGER}, 
+      #{contactSeqNo,jdbcType=INTEGER}, #{isWholeDayCall3month,jdbcType=CHAR}, #{callCount1month,jdbcType=INTEGER}, 
+      #{callTimePassive3month,jdbcType=INTEGER}, #{isWholeDayCall6month,jdbcType=CHAR}, 
+      #{callCountWorkday6month,jdbcType=INTEGER}, #{lastTimeCall6month,jdbcType=INTEGER}, 
+      #{msgCount1month,jdbcType=INTEGER}, #{contactAttribute,jdbcType=CHAR}, #{isVirtualNumber,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.RiskContactDetail" >
+    insert into risk_contact_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="callCountHoliday3month != null" >
+        call_count_holiday_3month,
+      </if>
+      <if test="callCountHoliday6month != null" >
+        call_count_holiday_6month,
+      </if>
+      <if test="callCountActive6month != null" >
+        call_count_active_6month,
+      </if>
+      <if test="callTime3month != null" >
+        call_time_3month,
+      </if>
+      <if test="msgCount3month != null" >
+        msg_count_3month,
+      </if>
+      <if test="callTimePassive6month != null" >
+        call_time_passive_6month,
+      </if>
+      <if test="callTime1month != null" >
+        call_time_1month,
+      </if>
+      <if test="callCountActive3month != null" >
+        call_count_active_3month,
+      </if>
+      <if test="callTime6month != null" >
+        call_time_6month,
+      </if>
+      <if test="contactType != null" >
+        contact_type,
+      </if>
+      <if test="callCountLateNight3month != null" >
+        call_count_late_night_3month,
+      </if>
+      <if test="callCountLateNight6month != null" >
+        call_count_late_night_6month,
+      </if>
+      <if test="callCountPassive6month != null" >
+        call_count_passive_6month,
+      </if>
+      <if test="callTimeActive6month != null" >
+        call_time_active_6month,
+      </if>
+      <if test="msgCount6month != null" >
+        msg_count_6month,
+      </if>
+      <if test="callCountWorkTime6month != null" >
+        call_count_work_time_6month,
+      </if>
+      <if test="firstTimeCall6month != null" >
+        first_time_call_6month,
+      </if>
+      <if test="callTimeActive3month != null" >
+        call_time_active_3month,
+      </if>
+      <if test="callCountPassive3month != null" >
+        call_count_passive_3month,
+      </if>
+      <if test="callCount3month != null" >
+        call_count_3month,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactRelation != null" >
+        contact_relation,
+      </if>
+      <if test="callCountWorkTime3month != null" >
+        call_count_work_time_3month,
+      </if>
+      <if test="callCountWorkday3month != null" >
+        call_count_workday_3month,
+      </if>
+      <if test="callCount6month != null" >
+        call_count_6month,
+      </if>
+      <if test="callCountOffworkTime3month != null" >
+        call_count_offwork_time_3month,
+      </if>
+      <if test="callCountOffworkTime6month != null" >
+        call_count_offwork_time_6month,
+      </if>
+      <if test="contactNumber != null" >
+        contact_number,
+      </if>
+      <if test="contactArea != null" >
+        contact_area,
+      </if>
+      <if test="callCount1week != null" >
+        call_count_1week,
+      </if>
+      <if test="contactSeqNo != null" >
+        contact_seq_no,
+      </if>
+      <if test="isWholeDayCall3month != null" >
+        is_whole_day_call_3month,
+      </if>
+      <if test="callCount1month != null" >
+        call_count_1month,
+      </if>
+      <if test="callTimePassive3month != null" >
+        call_time_passive_3month,
+      </if>
+      <if test="isWholeDayCall6month != null" >
+        is_whole_day_call_6month,
+      </if>
+      <if test="callCountWorkday6month != null" >
+        call_count_workday_6month,
+      </if>
+      <if test="lastTimeCall6month != null" >
+        last_time_call_6month,
+      </if>
+      <if test="msgCount1month != null" >
+        msg_count_1month,
+      </if>
+      <if test="contactAttribute != null" >
+        contact_attribute,
+      </if>
+      <if test="isVirtualNumber != null" >
+        is_virtual_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="callCountHoliday3month != null" >
+        #{callCountHoliday3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountHoliday6month != null" >
+        #{callCountHoliday6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountActive6month != null" >
+        #{callCountActive6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTime3month != null" >
+        #{callTime3month,jdbcType=INTEGER},
+      </if>
+      <if test="msgCount3month != null" >
+        #{msgCount3month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimePassive6month != null" >
+        #{callTimePassive6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTime1month != null" >
+        #{callTime1month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountActive3month != null" >
+        #{callCountActive3month,jdbcType=INTEGER},
+      </if>
+      <if test="callTime6month != null" >
+        #{callTime6month,jdbcType=INTEGER},
+      </if>
+      <if test="contactType != null" >
+        #{contactType,jdbcType=CHAR},
+      </if>
+      <if test="callCountLateNight3month != null" >
+        #{callCountLateNight3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountLateNight6month != null" >
+        #{callCountLateNight6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountPassive6month != null" >
+        #{callCountPassive6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimeActive6month != null" >
+        #{callTimeActive6month,jdbcType=INTEGER},
+      </if>
+      <if test="msgCount6month != null" >
+        #{msgCount6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountWorkTime6month != null" >
+        #{callCountWorkTime6month,jdbcType=INTEGER},
+      </if>
+      <if test="firstTimeCall6month != null" >
+        #{firstTimeCall6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimeActive3month != null" >
+        #{callTimeActive3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountPassive3month != null" >
+        #{callCountPassive3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCount3month != null" >
+        #{callCount3month,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=CHAR},
+      </if>
+      <if test="contactRelation != null" >
+        #{contactRelation,jdbcType=CHAR},
+      </if>
+      <if test="callCountWorkTime3month != null" >
+        #{callCountWorkTime3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountWorkday3month != null" >
+        #{callCountWorkday3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCount6month != null" >
+        #{callCount6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountOffworkTime3month != null" >
+        #{callCountOffworkTime3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountOffworkTime6month != null" >
+        #{callCountOffworkTime6month,jdbcType=INTEGER},
+      </if>
+      <if test="contactNumber != null" >
+        #{contactNumber,jdbcType=BIGINT},
+      </if>
+      <if test="contactArea != null" >
+        #{contactArea,jdbcType=CHAR},
+      </if>
+      <if test="callCount1week != null" >
+        #{callCount1week,jdbcType=INTEGER},
+      </if>
+      <if test="contactSeqNo != null" >
+        #{contactSeqNo,jdbcType=INTEGER},
+      </if>
+      <if test="isWholeDayCall3month != null" >
+        #{isWholeDayCall3month,jdbcType=CHAR},
+      </if>
+      <if test="callCount1month != null" >
+        #{callCount1month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimePassive3month != null" >
+        #{callTimePassive3month,jdbcType=INTEGER},
+      </if>
+      <if test="isWholeDayCall6month != null" >
+        #{isWholeDayCall6month,jdbcType=CHAR},
+      </if>
+      <if test="callCountWorkday6month != null" >
+        #{callCountWorkday6month,jdbcType=INTEGER},
+      </if>
+      <if test="lastTimeCall6month != null" >
+        #{lastTimeCall6month,jdbcType=INTEGER},
+      </if>
+      <if test="msgCount1month != null" >
+        #{msgCount1month,jdbcType=INTEGER},
+      </if>
+      <if test="contactAttribute != null" >
+        #{contactAttribute,jdbcType=CHAR},
+      </if>
+      <if test="isVirtualNumber != null" >
+        #{isVirtualNumber,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.RiskContactDetail" >
+    update risk_contact_detail
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="callCountHoliday3month != null" >
+        call_count_holiday_3month = #{callCountHoliday3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountHoliday6month != null" >
+        call_count_holiday_6month = #{callCountHoliday6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountActive6month != null" >
+        call_count_active_6month = #{callCountActive6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTime3month != null" >
+        call_time_3month = #{callTime3month,jdbcType=INTEGER},
+      </if>
+      <if test="msgCount3month != null" >
+        msg_count_3month = #{msgCount3month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimePassive6month != null" >
+        call_time_passive_6month = #{callTimePassive6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTime1month != null" >
+        call_time_1month = #{callTime1month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountActive3month != null" >
+        call_count_active_3month = #{callCountActive3month,jdbcType=INTEGER},
+      </if>
+      <if test="callTime6month != null" >
+        call_time_6month = #{callTime6month,jdbcType=INTEGER},
+      </if>
+      <if test="contactType != null" >
+        contact_type = #{contactType,jdbcType=CHAR},
+      </if>
+      <if test="callCountLateNight3month != null" >
+        call_count_late_night_3month = #{callCountLateNight3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountLateNight6month != null" >
+        call_count_late_night_6month = #{callCountLateNight6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountPassive6month != null" >
+        call_count_passive_6month = #{callCountPassive6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimeActive6month != null" >
+        call_time_active_6month = #{callTimeActive6month,jdbcType=INTEGER},
+      </if>
+      <if test="msgCount6month != null" >
+        msg_count_6month = #{msgCount6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountWorkTime6month != null" >
+        call_count_work_time_6month = #{callCountWorkTime6month,jdbcType=INTEGER},
+      </if>
+      <if test="firstTimeCall6month != null" >
+        first_time_call_6month = #{firstTimeCall6month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimeActive3month != null" >
+        call_time_active_3month = #{callTimeActive3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountPassive3month != null" >
+        call_count_passive_3month = #{callCountPassive3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCount3month != null" >
+        call_count_3month = #{callCount3month,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=CHAR},
+      </if>
+      <if test="contactRelation != null" >
+        contact_relation = #{contactRelation,jdbcType=CHAR},
+      </if>
+      <if test="callCountWorkTime3month != null" >
+        call_count_work_time_3month = #{callCountWorkTime3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountWorkday3month != null" >
+        call_count_workday_3month = #{callCountWorkday3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCount6month != null" >
+        call_count_6month = #{callCount6month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountOffworkTime3month != null" >
+        call_count_offwork_time_3month = #{callCountOffworkTime3month,jdbcType=INTEGER},
+      </if>
+      <if test="callCountOffworkTime6month != null" >
+        call_count_offwork_time_6month = #{callCountOffworkTime6month,jdbcType=INTEGER},
+      </if>
+      <if test="contactNumber != null" >
+        contact_number = #{contactNumber,jdbcType=BIGINT},
+      </if>
+      <if test="contactArea != null" >
+        contact_area = #{contactArea,jdbcType=CHAR},
+      </if>
+      <if test="callCount1week != null" >
+        call_count_1week = #{callCount1week,jdbcType=INTEGER},
+      </if>
+      <if test="contactSeqNo != null" >
+        contact_seq_no = #{contactSeqNo,jdbcType=INTEGER},
+      </if>
+      <if test="isWholeDayCall3month != null" >
+        is_whole_day_call_3month = #{isWholeDayCall3month,jdbcType=CHAR},
+      </if>
+      <if test="callCount1month != null" >
+        call_count_1month = #{callCount1month,jdbcType=INTEGER},
+      </if>
+      <if test="callTimePassive3month != null" >
+        call_time_passive_3month = #{callTimePassive3month,jdbcType=INTEGER},
+      </if>
+      <if test="isWholeDayCall6month != null" >
+        is_whole_day_call_6month = #{isWholeDayCall6month,jdbcType=CHAR},
+      </if>
+      <if test="callCountWorkday6month != null" >
+        call_count_workday_6month = #{callCountWorkday6month,jdbcType=INTEGER},
+      </if>
+      <if test="lastTimeCall6month != null" >
+        last_time_call_6month = #{lastTimeCall6month,jdbcType=INTEGER},
+      </if>
+      <if test="msgCount1month != null" >
+        msg_count_1month = #{msgCount1month,jdbcType=INTEGER},
+      </if>
+      <if test="contactAttribute != null" >
+        contact_attribute = #{contactAttribute,jdbcType=CHAR},
+      </if>
+      <if test="isVirtualNumber != null" >
+        is_virtual_number = #{isVirtualNumber,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.RiskContactDetail" >
+    update risk_contact_detail
+    set vid = #{vid,jdbcType=CHAR},
+      call_count_holiday_3month = #{callCountHoliday3month,jdbcType=INTEGER},
+      call_count_holiday_6month = #{callCountHoliday6month,jdbcType=INTEGER},
+      call_count_active_6month = #{callCountActive6month,jdbcType=INTEGER},
+      call_time_3month = #{callTime3month,jdbcType=INTEGER},
+      msg_count_3month = #{msgCount3month,jdbcType=INTEGER},
+      call_time_passive_6month = #{callTimePassive6month,jdbcType=INTEGER},
+      call_time_1month = #{callTime1month,jdbcType=INTEGER},
+      call_count_active_3month = #{callCountActive3month,jdbcType=INTEGER},
+      call_time_6month = #{callTime6month,jdbcType=INTEGER},
+      contact_type = #{contactType,jdbcType=CHAR},
+      call_count_late_night_3month = #{callCountLateNight3month,jdbcType=INTEGER},
+      call_count_late_night_6month = #{callCountLateNight6month,jdbcType=INTEGER},
+      call_count_passive_6month = #{callCountPassive6month,jdbcType=INTEGER},
+      call_time_active_6month = #{callTimeActive6month,jdbcType=INTEGER},
+      msg_count_6month = #{msgCount6month,jdbcType=INTEGER},
+      call_count_work_time_6month = #{callCountWorkTime6month,jdbcType=INTEGER},
+      first_time_call_6month = #{firstTimeCall6month,jdbcType=INTEGER},
+      call_time_active_3month = #{callTimeActive3month,jdbcType=INTEGER},
+      call_count_passive_3month = #{callCountPassive3month,jdbcType=INTEGER},
+      call_count_3month = #{callCount3month,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=CHAR},
+      contact_relation = #{contactRelation,jdbcType=CHAR},
+      call_count_work_time_3month = #{callCountWorkTime3month,jdbcType=INTEGER},
+      call_count_workday_3month = #{callCountWorkday3month,jdbcType=INTEGER},
+      call_count_6month = #{callCount6month,jdbcType=INTEGER},
+      call_count_offwork_time_3month = #{callCountOffworkTime3month,jdbcType=INTEGER},
+      call_count_offwork_time_6month = #{callCountOffworkTime6month,jdbcType=INTEGER},
+      contact_number = #{contactNumber,jdbcType=BIGINT},
+      contact_area = #{contactArea,jdbcType=CHAR},
+      call_count_1week = #{callCount1week,jdbcType=INTEGER},
+      contact_seq_no = #{contactSeqNo,jdbcType=INTEGER},
+      is_whole_day_call_3month = #{isWholeDayCall3month,jdbcType=CHAR},
+      call_count_1month = #{callCount1month,jdbcType=INTEGER},
+      call_time_passive_3month = #{callTimePassive3month,jdbcType=INTEGER},
+      is_whole_day_call_6month = #{isWholeDayCall6month,jdbcType=CHAR},
+      call_count_workday_6month = #{callCountWorkday6month,jdbcType=INTEGER},
+      last_time_call_6month = #{lastTimeCall6month,jdbcType=INTEGER},
+      msg_count_1month = #{msgCount1month,jdbcType=INTEGER},
+      contact_attribute = #{contactAttribute,jdbcType=CHAR},
+      is_virtual_number = #{isVirtualNumber,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectRiskCountByVid" parameterType="string" resultType="java.lang.Integer">
+  	SELECT count(DISTINCT contact_number) as counts FROM jyy_fk_db.risk_contact_detail WHERE vid=#{vid}
+  </select>
+</mapper>

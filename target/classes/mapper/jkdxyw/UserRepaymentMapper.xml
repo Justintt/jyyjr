@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.jkdxywdao.JkUserRepaymentMapper" >
+  
+  <select id="selectOverdueByVid" parameterType="string" resultType="com.jyyjr.vo.LinkedOverdueVo">
+  	SELECT r.*,overdue_day FROM dxd_urge.user_overdue o RIGHT JOIN (SELECT vid,repayment_no,is_overdue,`status` FROM dxd_caiwu.user_repayment 
+  	WHERE vid=#{vid} AND `status`!=5 ORDER BY repayment_no DESC LIMIT 1) r ON r.repayment_no=o.repayment_no
+  </select>
+</mapper>

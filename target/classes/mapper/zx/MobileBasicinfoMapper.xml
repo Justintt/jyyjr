@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.MobileBasicinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.MobileBasicinfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="BIGINT" />
+    <result column="idcard" property="idcard" jdbcType="CHAR" />
+    <result column="register_time" property="registerTime" jdbcType="INTEGER" />
+    <result column="vip_level" property="vipLevel" jdbcType="CHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="net_age" property="netAge" jdbcType="INTEGER" />
+    <result column="cert_addr" property="certAddr" jdbcType="CHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, mobile, idcard, register_time, vip_level, score, user_name, net_age, cert_addr, 
+    amount, ctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mobile_basicinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mobile_basicinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.MobileBasicinfo" >
+    insert into mobile_basicinfo (id, vid, mobile, 
+      idcard, register_time, vip_level, 
+      score, user_name, net_age, 
+      cert_addr, amount, ctime
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{mobile,jdbcType=BIGINT}, 
+      #{idcard,jdbcType=CHAR}, #{registerTime,jdbcType=INTEGER}, #{vipLevel,jdbcType=CHAR}, 
+      #{score,jdbcType=INTEGER}, #{userName,jdbcType=CHAR}, #{netAge,jdbcType=INTEGER}, 
+      #{certAddr,jdbcType=CHAR}, #{amount,jdbcType=DECIMAL}, #{ctime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.MobileBasicinfo" >
+    insert into mobile_basicinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="registerTime != null" >
+        register_time,
+      </if>
+      <if test="vipLevel != null" >
+        vip_level,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="netAge != null" >
+        net_age,
+      </if>
+      <if test="certAddr != null" >
+        cert_addr,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="registerTime != null" >
+        #{registerTime,jdbcType=INTEGER},
+      </if>
+      <if test="vipLevel != null" >
+        #{vipLevel,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="netAge != null" >
+        #{netAge,jdbcType=INTEGER},
+      </if>
+      <if test="certAddr != null" >
+        #{certAddr,jdbcType=CHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.MobileBasicinfo" >
+    update mobile_basicinfo
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="registerTime != null" >
+        register_time = #{registerTime,jdbcType=INTEGER},
+      </if>
+      <if test="vipLevel != null" >
+        vip_level = #{vipLevel,jdbcType=CHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="netAge != null" >
+        net_age = #{netAge,jdbcType=INTEGER},
+      </if>
+      <if test="certAddr != null" >
+        cert_addr = #{certAddr,jdbcType=CHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.MobileBasicinfo" >
+    update mobile_basicinfo
+    set vid = #{vid,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=BIGINT},
+      idcard = #{idcard,jdbcType=CHAR},
+      register_time = #{registerTime,jdbcType=INTEGER},
+      vip_level = #{vipLevel,jdbcType=CHAR},
+      score = #{score,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=CHAR},
+      net_age = #{netAge,jdbcType=INTEGER},
+      cert_addr = #{certAddr,jdbcType=CHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      ctime = #{ctime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectNetAgeByvid" parameterType="string" resultType="java.lang.Integer">
+  	SELECT net_age FROM jyy_fk_db.mobile_basicinfo WHERE vid=#{vid}
+  </select>
+  
+  <select id="selectCtimeByVid" parameterType="string" resultType="java.lang.Long">
+  	SELECT ctime FROM jyy_fk_db.mobile_basicinfo WHERE vid=#{vid} ORDER BY id DESC LIMIT 1
+  </select>
+</mapper>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.UserBlackListMapper" >
+  <select id="selectUserBlackStatus" parameterType="string" resultType="java.lang.Integer">
+  	SELECT `status` FROM dxd_urge.user_blacklist WHERE vid=#{vid}
+  </select>
+</mapper>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.BehaviorAnalysisMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.BehaviorAnalysis" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="late_night_analysis_6month" property="lateNightAnalysis6month" jdbcType="CHAR" />
+    <result column="call_120_analysis_6month" property="call120Analysis6month" jdbcType="CHAR" />
+    <result column="call_lawyer_analysis_6month" property="callLawyerAnalysis6month" jdbcType="CHAR" />
+    <result column="emergency_contact2_analysis_6month" property="emergencyContact2Analysis6month" jdbcType="CHAR" />
+    <result column="mutual_number_analysis_6month" property="mutualNumberAnalysis6month" jdbcType="CHAR" />
+    <result column="emergency_contact1_analysis_6month" property="emergencyContact1Analysis6month" jdbcType="CHAR" />
+    <result column="collection_contact_analysis_6month" property="collectionContactAnalysis6month" jdbcType="CHAR" />
+    <result column="call_110_analysis_6month" property="call110Analysis6month" jdbcType="CHAR" />
+    <result column="mobile_net_age_analysis" property="mobileNetAgeAnalysis" jdbcType="CHAR" />
+    <result column="mobile_silence_analysis_6month" property="mobileSilenceAnalysis6month" jdbcType="CHAR" />
+    <result column="call_macau_analysis_6month" property="callMacauAnalysis6month" jdbcType="CHAR" />
+    <result column="call_court_analysis_6month" property="callCourtAnalysis6month" jdbcType="CHAR" />
+    <result column="loan_contact_analysis_6month" property="loanContactAnalysis6month" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, late_night_analysis_6month, call_120_analysis_6month, call_lawyer_analysis_6month, 
+    emergency_contact2_analysis_6month, mutual_number_analysis_6month, emergency_contact1_analysis_6month, 
+    collection_contact_analysis_6month, call_110_analysis_6month, mobile_net_age_analysis, 
+    mobile_silence_analysis_6month, call_macau_analysis_6month, call_court_analysis_6month, 
+    loan_contact_analysis_6month
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from behavior_analysis
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from behavior_analysis
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.BehaviorAnalysis" >
+    insert into behavior_analysis (id, vid, late_night_analysis_6month, 
+      call_120_analysis_6month, call_lawyer_analysis_6month, 
+      emergency_contact2_analysis_6month, mutual_number_analysis_6month, 
+      emergency_contact1_analysis_6month, collection_contact_analysis_6month, 
+      call_110_analysis_6month, mobile_net_age_analysis, 
+      mobile_silence_analysis_6month, call_macau_analysis_6month, 
+      call_court_analysis_6month, loan_contact_analysis_6month
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{lateNightAnalysis6month,jdbcType=CHAR}, 
+      #{call120Analysis6month,jdbcType=CHAR}, #{callLawyerAnalysis6month,jdbcType=CHAR}, 
+      #{emergencyContact2Analysis6month,jdbcType=CHAR}, #{mutualNumberAnalysis6month,jdbcType=CHAR}, 
+      #{emergencyContact1Analysis6month,jdbcType=CHAR}, #{collectionContactAnalysis6month,jdbcType=CHAR}, 
+      #{call110Analysis6month,jdbcType=CHAR}, #{mobileNetAgeAnalysis,jdbcType=CHAR}, 
+      #{mobileSilenceAnalysis6month,jdbcType=CHAR}, #{callMacauAnalysis6month,jdbcType=CHAR}, 
+      #{callCourtAnalysis6month,jdbcType=CHAR}, #{loanContactAnalysis6month,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.BehaviorAnalysis" >
+    insert into behavior_analysis
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="lateNightAnalysis6month != null" >
+        late_night_analysis_6month,
+      </if>
+      <if test="call120Analysis6month != null" >
+        call_120_analysis_6month,
+      </if>
+      <if test="callLawyerAnalysis6month != null" >
+        call_lawyer_analysis_6month,
+      </if>
+      <if test="emergencyContact2Analysis6month != null" >
+        emergency_contact2_analysis_6month,
+      </if>
+      <if test="mutualNumberAnalysis6month != null" >
+        mutual_number_analysis_6month,
+      </if>
+      <if test="emergencyContact1Analysis6month != null" >
+        emergency_contact1_analysis_6month,
+      </if>
+      <if test="collectionContactAnalysis6month != null" >
+        collection_contact_analysis_6month,
+      </if>
+      <if test="call110Analysis6month != null" >
+        call_110_analysis_6month,
+      </if>
+      <if test="mobileNetAgeAnalysis != null" >
+        mobile_net_age_analysis,
+      </if>
+      <if test="mobileSilenceAnalysis6month != null" >
+        mobile_silence_analysis_6month,
+      </if>
+      <if test="callMacauAnalysis6month != null" >
+        call_macau_analysis_6month,
+      </if>
+      <if test="callCourtAnalysis6month != null" >
+        call_court_analysis_6month,
+      </if>
+      <if test="loanContactAnalysis6month != null" >
+        loan_contact_analysis_6month,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="lateNightAnalysis6month != null" >
+        #{lateNightAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="call120Analysis6month != null" >
+        #{call120Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="callLawyerAnalysis6month != null" >
+        #{callLawyerAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="emergencyContact2Analysis6month != null" >
+        #{emergencyContact2Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="mutualNumberAnalysis6month != null" >
+        #{mutualNumberAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="emergencyContact1Analysis6month != null" >
+        #{emergencyContact1Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="collectionContactAnalysis6month != null" >
+        #{collectionContactAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="call110Analysis6month != null" >
+        #{call110Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="mobileNetAgeAnalysis != null" >
+        #{mobileNetAgeAnalysis,jdbcType=CHAR},
+      </if>
+      <if test="mobileSilenceAnalysis6month != null" >
+        #{mobileSilenceAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="callMacauAnalysis6month != null" >
+        #{callMacauAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="callCourtAnalysis6month != null" >
+        #{callCourtAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="loanContactAnalysis6month != null" >
+        #{loanContactAnalysis6month,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.BehaviorAnalysis" >
+    update behavior_analysis
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="lateNightAnalysis6month != null" >
+        late_night_analysis_6month = #{lateNightAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="call120Analysis6month != null" >
+        call_120_analysis_6month = #{call120Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="callLawyerAnalysis6month != null" >
+        call_lawyer_analysis_6month = #{callLawyerAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="emergencyContact2Analysis6month != null" >
+        emergency_contact2_analysis_6month = #{emergencyContact2Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="mutualNumberAnalysis6month != null" >
+        mutual_number_analysis_6month = #{mutualNumberAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="emergencyContact1Analysis6month != null" >
+        emergency_contact1_analysis_6month = #{emergencyContact1Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="collectionContactAnalysis6month != null" >
+        collection_contact_analysis_6month = #{collectionContactAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="call110Analysis6month != null" >
+        call_110_analysis_6month = #{call110Analysis6month,jdbcType=CHAR},
+      </if>
+      <if test="mobileNetAgeAnalysis != null" >
+        mobile_net_age_analysis = #{mobileNetAgeAnalysis,jdbcType=CHAR},
+      </if>
+      <if test="mobileSilenceAnalysis6month != null" >
+        mobile_silence_analysis_6month = #{mobileSilenceAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="callMacauAnalysis6month != null" >
+        call_macau_analysis_6month = #{callMacauAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="callCourtAnalysis6month != null" >
+        call_court_analysis_6month = #{callCourtAnalysis6month,jdbcType=CHAR},
+      </if>
+      <if test="loanContactAnalysis6month != null" >
+        loan_contact_analysis_6month = #{loanContactAnalysis6month,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.BehaviorAnalysis" >
+    update behavior_analysis
+    set vid = #{vid,jdbcType=CHAR},
+      late_night_analysis_6month = #{lateNightAnalysis6month,jdbcType=CHAR},
+      call_120_analysis_6month = #{call120Analysis6month,jdbcType=CHAR},
+      call_lawyer_analysis_6month = #{callLawyerAnalysis6month,jdbcType=CHAR},
+      emergency_contact2_analysis_6month = #{emergencyContact2Analysis6month,jdbcType=CHAR},
+      mutual_number_analysis_6month = #{mutualNumberAnalysis6month,jdbcType=CHAR},
+      emergency_contact1_analysis_6month = #{emergencyContact1Analysis6month,jdbcType=CHAR},
+      collection_contact_analysis_6month = #{collectionContactAnalysis6month,jdbcType=CHAR},
+      call_110_analysis_6month = #{call110Analysis6month,jdbcType=CHAR},
+      mobile_net_age_analysis = #{mobileNetAgeAnalysis,jdbcType=CHAR},
+      mobile_silence_analysis_6month = #{mobileSilenceAnalysis6month,jdbcType=CHAR},
+      call_macau_analysis_6month = #{callMacauAnalysis6month,jdbcType=CHAR},
+      call_court_analysis_6month = #{callCourtAnalysis6month,jdbcType=CHAR},
+      loan_contact_analysis_6month = #{loanContactAnalysis6month,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectBaMsgByVid" parameterType="string" resultType="map">
+  	SELECT collection_contact_analysis_6month,loan_contact_analysis_6month FROM jyy_fk_db.behavior_analysis WHERE vid=#{vid} ORDER BY id DESC limit 1
+  </select>
+</mapper>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.UserWokeVerifyMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.UserWokeVerify" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="work_mobile" property="workMobile" jdbcType="CHAR" />
+    <result column="work_location" property="workLocation" jdbcType="CHAR" />
+    <result column="work_type" property="workType" jdbcType="CHAR" />
+    <result column="work_address" property="workAddress" jdbcType="CHAR" />
+    <result column="work_position" property="workPosition" jdbcType="CHAR" />
+    <result column="work_company" property="workCompany" jdbcType="CHAR" />
+    <result column="img_one" property="imgOne" jdbcType="CHAR" />
+    <result column="img_thr" property="imgThr" jdbcType="CHAR" />
+    <result column="img_two" property="imgTwo" jdbcType="CHAR" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="monthly_income" property="monthlyIncome" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, work_mobile, work_location, work_type, work_address, work_position, work_company, 
+    img_one, img_thr, img_two, ctime, monthly_income
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_woke_verify
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_woke_verify
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.UserWokeVerify" >
+    insert into user_woke_verify (id, vid, work_mobile, 
+      work_location, work_type, work_address, 
+      work_position, work_company, img_one, 
+      img_thr, img_two, ctime, monthly_income
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{workMobile,jdbcType=CHAR}, 
+      #{workLocation,jdbcType=CHAR}, #{workType,jdbcType=CHAR}, #{workAddress,jdbcType=CHAR}, 
+      #{workPosition,jdbcType=CHAR}, #{workCompany,jdbcType=CHAR}, #{imgOne,jdbcType=CHAR}, 
+      #{imgThr,jdbcType=CHAR}, #{imgTwo,jdbcType=CHAR}, #{ctime,jdbcType=INTEGER}, #{monthlyIncome,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.UserWokeVerify" >
+    insert into user_woke_verify
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="workMobile != null" >
+        work_mobile,
+      </if>
+      <if test="workLocation != null" >
+        work_location,
+      </if>
+      <if test="workType != null" >
+        work_type,
+      </if>
+      <if test="workAddress != null" >
+        work_address,
+      </if>
+      <if test="workPosition != null" >
+        work_position,
+      </if>
+      <if test="workCompany != null" >
+        work_company,
+      </if>
+      <if test="imgOne != null" >
+        img_one,
+      </if>
+      <if test="imgThr != null" >
+        img_thr,
+      </if>
+      <if test="imgTwo != null" >
+        img_two,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="monthlyIncome != null" >
+        monthly_income,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="workMobile != null" >
+        #{workMobile,jdbcType=CHAR},
+      </if>
+      <if test="workLocation != null" >
+        #{workLocation,jdbcType=CHAR},
+      </if>
+      <if test="workType != null" >
+        #{workType,jdbcType=CHAR},
+      </if>
+      <if test="workAddress != null" >
+        #{workAddress,jdbcType=CHAR},
+      </if>
+      <if test="workPosition != null" >
+        #{workPosition,jdbcType=CHAR},
+      </if>
+      <if test="workCompany != null" >
+        #{workCompany,jdbcType=CHAR},
+      </if>
+      <if test="imgOne != null" >
+        #{imgOne,jdbcType=CHAR},
+      </if>
+      <if test="imgThr != null" >
+        #{imgThr,jdbcType=CHAR},
+      </if>
+      <if test="imgTwo != null" >
+        #{imgTwo,jdbcType=CHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyIncome != null" >
+        #{monthlyIncome,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.UserWokeVerify" >
+    update user_woke_verify
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="workMobile != null" >
+        work_mobile = #{workMobile,jdbcType=CHAR},
+      </if>
+      <if test="workLocation != null" >
+        work_location = #{workLocation,jdbcType=CHAR},
+      </if>
+      <if test="workType != null" >
+        work_type = #{workType,jdbcType=CHAR},
+      </if>
+      <if test="workAddress != null" >
+        work_address = #{workAddress,jdbcType=CHAR},
+      </if>
+      <if test="workPosition != null" >
+        work_position = #{workPosition,jdbcType=CHAR},
+      </if>
+      <if test="workCompany != null" >
+        work_company = #{workCompany,jdbcType=CHAR},
+      </if>
+      <if test="imgOne != null" >
+        img_one = #{imgOne,jdbcType=CHAR},
+      </if>
+      <if test="imgThr != null" >
+        img_thr = #{imgThr,jdbcType=CHAR},
+      </if>
+      <if test="imgTwo != null" >
+        img_two = #{imgTwo,jdbcType=CHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyIncome != null" >
+        monthly_income = #{monthlyIncome,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.UserWokeVerify" >
+    update user_woke_verify
+    set vid = #{vid,jdbcType=CHAR},
+      work_mobile = #{workMobile,jdbcType=CHAR},
+      work_location = #{workLocation,jdbcType=CHAR},
+      work_type = #{workType,jdbcType=CHAR},
+      work_address = #{workAddress,jdbcType=CHAR},
+      work_position = #{workPosition,jdbcType=CHAR},
+      work_company = #{workCompany,jdbcType=CHAR},
+      img_one = #{imgOne,jdbcType=CHAR},
+      img_thr = #{imgThr,jdbcType=CHAR},
+      img_two = #{imgTwo,jdbcType=CHAR},
+      ctime = #{ctime,jdbcType=INTEGER},
+      monthly_income = #{monthlyIncome,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectWorkAddressByVid" parameterType="string" resultType="map">
+  	SELECT work_location,work_address FROM dxd_user.user_woke_verify WHERE vid=#{vid} LIMIT 1
+  </select>
+  
+  <select id="selectWorkCompany" parameterType="string" resultType="string">
+  	SELECT * FROM ((SELECT work_company FROM dxd_user.user_woke_verify WHERE vid=#{vid}) UNION (SELECT company FROM dxd_user.user_work WHERE vid=#{vid})) t LIMIT 1
+  </select>
+  
+  <select id="selectBinCompanyUsers" parameterType="string" resultType="string">
+  	SELECT a.vid FROM (SELECT vid FROM dxd_user.user_woke_verify WHERE work_company=#{workCompany} union DISTINCT SELECT vid FROM dxd_user.user_work WHERE company=#{workCompany}) a
+  </select>
+</mapper>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- Y0001符合条件 -->
+	<bean id="actionLoanMonitorServiceImpl" class="com.jyyjr.service.impl.ActionLoanMonitorServiceImpl"/>
+	<bean id="firstOverdueMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>firstOverdue</value>
+		</property>
+	</bean>
+	<bean id="firstOverdueTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="firstOverdueMethod" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 1 * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 命中Y0001 -->
+	<bean id="borrowingMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>borrowing</value>
+		</property>
+	</bean>
+	<bean id="borrowingTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="borrowingMethod" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/5 * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 检查warning表中是否符合贷中条件 -->
+	<bean id="userRepayOrOverdueMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>userRepayOrOverdue</value>
+		</property>
+	</bean>
+	<bean id="userRepayOrOverdueTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="userRepayOrOverdueMethod" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/3 * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 命中Y0003 -->
+	<bean id="checkY0003Method" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>checkY0003</value>
+		</property>
+	</bean>
+	<bean id="checkY0003Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="checkY0003Method" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/30 * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 命中Y0004 -->
+	<bean id="checkY0004Method" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>checkY0004</value>
+		</property>
+	</bean>
+	<bean id="checkY0004Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="checkY0004Method" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0 0 * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- 检查用户是否再次发起借款 -->
+	<bean id="userCheckBorrowMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>userCheckBorrow</value>
+		</property>
+	</bean>
+	<bean id="userCheckBorrowTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="userCheckBorrowMethod" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/6 * * * ?</value>
+		</property>
+	</bean>
+	<!-- Y0005 -->
+	<bean id="checkY0005Method" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>checkY0005</value>
+		</property>
+	</bean>
+	<bean id="checkY0005Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="checkY0005Method" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/15 * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- Y0006 -->
+	<bean id="checkY0006Method" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="actionLoanMonitorServiceImpl"/>
+		</property>
+		<property name="targetMethod">
+			<value>checkY0006</value>
+		</property>
+	</bean>
+	<bean id="checkY0006Trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="checkY0006Method" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/7 * * * ?</value>
+		</property>
+	</bean>
+	
+	<!-- <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+		<property name="triggers">
+			<list>
+				<ref bean="firstOverdueTrigger"/>
+				<ref bean="borrowingTrigger"/>
+				<ref bean="userRepayOrOverdueTrigger"/>
+				<ref bean="checkY0003Trigger"/>
+				<ref bean="checkY0004Trigger"/>
+				<ref bean="userCheckBorrowTrigger"/>
+				<ref bean="checkY0005Trigger"/>
+				<ref bean="checkY0006Trigger"/>
+			</list>
+		</property>
+	</bean> -->
+</beans>

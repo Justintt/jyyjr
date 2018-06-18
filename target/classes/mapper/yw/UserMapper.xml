@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="BIGINT" />
+    <result column="truename" property="truename" jdbcType="CHAR" />
+    <result column="id_card" property="idCard" jdbcType="CHAR" />
+    <result column="ismarry" property="ismarry" jdbcType="CHAR" />
+    <result column="province" property="province" jdbcType="CHAR" />
+    <result column="city" property="city" jdbcType="CHAR" />
+    <result column="lat" property="lat" jdbcType="CHAR" />
+    <result column="lng" property="lng" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="residence_time" property="residenceTime" jdbcType="CHAR" />
+    <result column="degree" property="degree" jdbcType="CHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="quota" property="quota" jdbcType="DECIMAL" />
+    <result column="pay_pwd" property="payPwd" jdbcType="CHAR" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="taobao_verify" property="taobaoVerify" jdbcType="TINYINT" />
+    <result column="credit_verify" property="creditVerify" jdbcType="TINYINT" />
+    <result column="shebao_verify" property="shebaoVerify" jdbcType="TINYINT" />
+    <result column="jd_verify" property="jdVerify" jdbcType="TINYINT" />
+    <result column="mobile_verify" property="mobileVerify" jdbcType="TINYINT" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="contact_verify" property="contactVerify" jdbcType="TINYINT" />
+    <result column="usermsg_verify" property="usermsgVerify" jdbcType="TINYINT" />
+    <result column="zhima_verify" property="zhimaVerify" jdbcType="TINYINT" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="cert_time" property="certTime" jdbcType="INTEGER" />
+    <result column="check_type" property="checkType" jdbcType="TINYINT" />
+    <result column="cert_status" property="certStatus" jdbcType="TINYINT" />
+    <result column="lowest_money" property="lowestMoney" jdbcType="INTEGER" />
+    <result column="work_cert" property="workCert" jdbcType="TINYINT" />
+    <result column="invite_code" property="inviteCode" jdbcType="CHAR" />
+    <result column="be_invite_code" property="beInviteCode" jdbcType="CHAR" />
+    <result column="edu_verify" property="eduVerify" jdbcType="TINYINT" />
+    <result column="is_alliance" property="isAlliance" jdbcType="TINYINT" />
+    <result column="waitdays" property="waitdays" jdbcType="INTEGER" />
+    <result column="statustype" property="statustype" jdbcType="TINYINT" />
+    <result column="checkstatus" property="checkstatus" jdbcType="TINYINT" />
+    <result column="balance" property="balance" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="record_status" property="recordStatus" jdbcType="TINYINT" />
+    <result column="bespeak_count" property="bespeakCount" jdbcType="INTEGER" />
+    <result column="freeze_balance" property="freezeBalance" jdbcType="DECIMAL" />
+    <result column="channel" property="channel" jdbcType="CHAR" />
+    <result column="bank_verify" property="bankVerify" jdbcType="TINYINT" />
+    <result column="index_check" property="indexCheck" jdbcType="TINYINT" />
+    <result column="alipay_verify" property="alipayVerify" jdbcType="BIT" />
+    <result column="work_verify" property="workVerify" jdbcType="TINYINT" />
+    <result column="mobile_status" property="mobileStatus" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, mobile, truename, id_card, ismarry, province, city, lat, lng, address, residence_time, 
+    degree, icon, money, quota, pay_pwd, ctime, taobao_verify, credit_verify, shebao_verify, 
+    jd_verify, mobile_verify, sex, contact_verify, usermsg_verify, zhima_verify, age, 
+    cert_time, check_type, cert_status, lowest_money, work_cert, invite_code, be_invite_code, 
+    edu_verify, is_alliance, waitdays, statustype, checkstatus, balance, status, record_status, 
+    bespeak_count, freeze_balance, channel, bank_verify, index_check, alipay_verify, 
+    work_verify, mobile_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dxd_user.user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dxd_user.user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.User" >
+    insert into dxd_user.user (id, vid, mobile, 
+      truename, id_card, ismarry, province, 
+      city, lat, lng, address, 
+      residence_time, degree, icon, 
+      money, quota, pay_pwd, 
+      ctime, taobao_verify, credit_verify, 
+      shebao_verify, jd_verify, mobile_verify, 
+      sex, contact_verify, usermsg_verify, 
+      zhima_verify, age, cert_time, 
+      check_type, cert_status, lowest_money, 
+      work_cert, invite_code, be_invite_code, 
+      edu_verify, is_alliance, waitdays, 
+      statustype, checkstatus, balance, 
+      status, record_status, bespeak_count, 
+      freeze_balance, channel, bank_verify, 
+      index_check, alipay_verify, work_verify, 
+      mobile_status)
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{mobile,jdbcType=BIGINT}, 
+      #{truename,jdbcType=CHAR}, #{idCard,jdbcType=CHAR}, #{ismarry,jdbcType=CHAR}, #{province,jdbcType=CHAR}, 
+      #{city,jdbcType=CHAR}, #{lat,jdbcType=CHAR}, #{lng,jdbcType=CHAR}, #{address,jdbcType=CHAR}, 
+      #{residenceTime,jdbcType=CHAR}, #{degree,jdbcType=CHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{money,jdbcType=DECIMAL}, #{quota,jdbcType=DECIMAL}, #{payPwd,jdbcType=CHAR}, 
+      #{ctime,jdbcType=INTEGER}, #{taobaoVerify,jdbcType=TINYINT}, #{creditVerify,jdbcType=TINYINT}, 
+      #{shebaoVerify,jdbcType=TINYINT}, #{jdVerify,jdbcType=TINYINT}, #{mobileVerify,jdbcType=TINYINT}, 
+      #{sex,jdbcType=TINYINT}, #{contactVerify,jdbcType=TINYINT}, #{usermsgVerify,jdbcType=TINYINT}, 
+      #{zhimaVerify,jdbcType=TINYINT}, #{age,jdbcType=INTEGER}, #{certTime,jdbcType=INTEGER}, 
+      #{checkType,jdbcType=TINYINT}, #{certStatus,jdbcType=TINYINT}, #{lowestMoney,jdbcType=INTEGER}, 
+      #{workCert,jdbcType=TINYINT}, #{inviteCode,jdbcType=CHAR}, #{beInviteCode,jdbcType=CHAR}, 
+      #{eduVerify,jdbcType=TINYINT}, #{isAlliance,jdbcType=TINYINT}, #{waitdays,jdbcType=INTEGER}, 
+      #{statustype,jdbcType=TINYINT}, #{checkstatus,jdbcType=TINYINT}, #{balance,jdbcType=DECIMAL}, 
+      #{status,jdbcType=TINYINT}, #{recordStatus,jdbcType=TINYINT}, #{bespeakCount,jdbcType=INTEGER}, 
+      #{freezeBalance,jdbcType=DECIMAL}, #{channel,jdbcType=CHAR}, #{bankVerify,jdbcType=TINYINT}, 
+      #{indexCheck,jdbcType=TINYINT}, #{alipayVerify,jdbcType=BIT}, #{workVerify,jdbcType=TINYINT}, 
+      #{mobileStatus,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.User" >
+    insert into dxd_user.user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="truename != null" >
+        truename,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="ismarry != null" >
+        ismarry,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lng != null" >
+        lng,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="residenceTime != null" >
+        residence_time,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="quota != null" >
+        quota,
+      </if>
+      <if test="payPwd != null" >
+        pay_pwd,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="taobaoVerify != null" >
+        taobao_verify,
+      </if>
+      <if test="creditVerify != null" >
+        credit_verify,
+      </if>
+      <if test="shebaoVerify != null" >
+        shebao_verify,
+      </if>
+      <if test="jdVerify != null" >
+        jd_verify,
+      </if>
+      <if test="mobileVerify != null" >
+        mobile_verify,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="contactVerify != null" >
+        contact_verify,
+      </if>
+      <if test="usermsgVerify != null" >
+        usermsg_verify,
+      </if>
+      <if test="zhimaVerify != null" >
+        zhima_verify,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="certTime != null" >
+        cert_time,
+      </if>
+      <if test="checkType != null" >
+        check_type,
+      </if>
+      <if test="certStatus != null" >
+        cert_status,
+      </if>
+      <if test="lowestMoney != null" >
+        lowest_money,
+      </if>
+      <if test="workCert != null" >
+        work_cert,
+      </if>
+      <if test="inviteCode != null" >
+        invite_code,
+      </if>
+      <if test="beInviteCode != null" >
+        be_invite_code,
+      </if>
+      <if test="eduVerify != null" >
+        edu_verify,
+      </if>
+      <if test="isAlliance != null" >
+        is_alliance,
+      </if>
+      <if test="waitdays != null" >
+        waitdays,
+      </if>
+      <if test="statustype != null" >
+        statustype,
+      </if>
+      <if test="checkstatus != null" >
+        checkstatus,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="recordStatus != null" >
+        record_status,
+      </if>
+      <if test="bespeakCount != null" >
+        bespeak_count,
+      </if>
+      <if test="freezeBalance != null" >
+        freeze_balance,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="bankVerify != null" >
+        bank_verify,
+      </if>
+      <if test="indexCheck != null" >
+        index_check,
+      </if>
+      <if test="alipayVerify != null" >
+        alipay_verify,
+      </if>
+      <if test="workVerify != null" >
+        work_verify,
+      </if>
+      <if test="mobileStatus != null" >
+        mobile_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="truename != null" >
+        #{truename,jdbcType=CHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=CHAR},
+      </if>
+      <if test="ismarry != null" >
+        #{ismarry,jdbcType=CHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=CHAR},
+      </if>
+      <if test="lng != null" >
+        #{lng,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="residenceTime != null" >
+        #{residenceTime,jdbcType=CHAR},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=CHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="quota != null" >
+        #{quota,jdbcType=DECIMAL},
+      </if>
+      <if test="payPwd != null" >
+        #{payPwd,jdbcType=CHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="taobaoVerify != null" >
+        #{taobaoVerify,jdbcType=TINYINT},
+      </if>
+      <if test="creditVerify != null" >
+        #{creditVerify,jdbcType=TINYINT},
+      </if>
+      <if test="shebaoVerify != null" >
+        #{shebaoVerify,jdbcType=TINYINT},
+      </if>
+      <if test="jdVerify != null" >
+        #{jdVerify,jdbcType=TINYINT},
+      </if>
+      <if test="mobileVerify != null" >
+        #{mobileVerify,jdbcType=TINYINT},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="contactVerify != null" >
+        #{contactVerify,jdbcType=TINYINT},
+      </if>
+      <if test="usermsgVerify != null" >
+        #{usermsgVerify,jdbcType=TINYINT},
+      </if>
+      <if test="zhimaVerify != null" >
+        #{zhimaVerify,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="certTime != null" >
+        #{certTime,jdbcType=INTEGER},
+      </if>
+      <if test="checkType != null" >
+        #{checkType,jdbcType=TINYINT},
+      </if>
+      <if test="certStatus != null" >
+        #{certStatus,jdbcType=TINYINT},
+      </if>
+      <if test="lowestMoney != null" >
+        #{lowestMoney,jdbcType=INTEGER},
+      </if>
+      <if test="workCert != null" >
+        #{workCert,jdbcType=TINYINT},
+      </if>
+      <if test="inviteCode != null" >
+        #{inviteCode,jdbcType=CHAR},
+      </if>
+      <if test="beInviteCode != null" >
+        #{beInviteCode,jdbcType=CHAR},
+      </if>
+      <if test="eduVerify != null" >
+        #{eduVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isAlliance != null" >
+        #{isAlliance,jdbcType=TINYINT},
+      </if>
+      <if test="waitdays != null" >
+        #{waitdays,jdbcType=INTEGER},
+      </if>
+      <if test="statustype != null" >
+        #{statustype,jdbcType=TINYINT},
+      </if>
+      <if test="checkstatus != null" >
+        #{checkstatus,jdbcType=TINYINT},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="recordStatus != null" >
+        #{recordStatus,jdbcType=TINYINT},
+      </if>
+      <if test="bespeakCount != null" >
+        #{bespeakCount,jdbcType=INTEGER},
+      </if>
+      <if test="freezeBalance != null" >
+        #{freezeBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=CHAR},
+      </if>
+      <if test="bankVerify != null" >
+        #{bankVerify,jdbcType=TINYINT},
+      </if>
+      <if test="indexCheck != null" >
+        #{indexCheck,jdbcType=TINYINT},
+      </if>
+      <if test="alipayVerify != null" >
+        #{alipayVerify,jdbcType=BIT},
+      </if>
+      <if test="workVerify != null" >
+        #{workVerify,jdbcType=TINYINT},
+      </if>
+      <if test="mobileStatus != null" >
+        #{mobileStatus,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.User" >
+    update dxd_user.user
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="truename != null" >
+        truename = #{truename,jdbcType=CHAR},
+      </if>
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=CHAR},
+      </if>
+      <if test="ismarry != null" >
+        ismarry = #{ismarry,jdbcType=CHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=CHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=CHAR},
+      </if>
+      <if test="lng != null" >
+        lng = #{lng,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="residenceTime != null" >
+        residence_time = #{residenceTime,jdbcType=CHAR},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=CHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="quota != null" >
+        quota = #{quota,jdbcType=DECIMAL},
+      </if>
+      <if test="payPwd != null" >
+        pay_pwd = #{payPwd,jdbcType=CHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="taobaoVerify != null" >
+        taobao_verify = #{taobaoVerify,jdbcType=TINYINT},
+      </if>
+      <if test="creditVerify != null" >
+        credit_verify = #{creditVerify,jdbcType=TINYINT},
+      </if>
+      <if test="shebaoVerify != null" >
+        shebao_verify = #{shebaoVerify,jdbcType=TINYINT},
+      </if>
+      <if test="jdVerify != null" >
+        jd_verify = #{jdVerify,jdbcType=TINYINT},
+      </if>
+      <if test="mobileVerify != null" >
+        mobile_verify = #{mobileVerify,jdbcType=TINYINT},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="contactVerify != null" >
+        contact_verify = #{contactVerify,jdbcType=TINYINT},
+      </if>
+      <if test="usermsgVerify != null" >
+        usermsg_verify = #{usermsgVerify,jdbcType=TINYINT},
+      </if>
+      <if test="zhimaVerify != null" >
+        zhima_verify = #{zhimaVerify,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="certTime != null" >
+        cert_time = #{certTime,jdbcType=INTEGER},
+      </if>
+      <if test="checkType != null" >
+        check_type = #{checkType,jdbcType=TINYINT},
+      </if>
+      <if test="certStatus != null" >
+        cert_status = #{certStatus,jdbcType=TINYINT},
+      </if>
+      <if test="lowestMoney != null" >
+        lowest_money = #{lowestMoney,jdbcType=INTEGER},
+      </if>
+      <if test="workCert != null" >
+        work_cert = #{workCert,jdbcType=TINYINT},
+      </if>
+      <if test="inviteCode != null" >
+        invite_code = #{inviteCode,jdbcType=CHAR},
+      </if>
+      <if test="beInviteCode != null" >
+        be_invite_code = #{beInviteCode,jdbcType=CHAR},
+      </if>
+      <if test="eduVerify != null" >
+        edu_verify = #{eduVerify,jdbcType=TINYINT},
+      </if>
+      <if test="isAlliance != null" >
+        is_alliance = #{isAlliance,jdbcType=TINYINT},
+      </if>
+      <if test="waitdays != null" >
+        waitdays = #{waitdays,jdbcType=INTEGER},
+      </if>
+      <if test="statustype != null" >
+        statustype = #{statustype,jdbcType=TINYINT},
+      </if>
+      <if test="checkstatus != null" >
+        checkstatus = #{checkstatus,jdbcType=TINYINT},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="recordStatus != null" >
+        record_status = #{recordStatus,jdbcType=TINYINT},
+      </if>
+      <if test="bespeakCount != null" >
+        bespeak_count = #{bespeakCount,jdbcType=INTEGER},
+      </if>
+      <if test="freezeBalance != null" >
+        freeze_balance = #{freezeBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=CHAR},
+      </if>
+      <if test="bankVerify != null" >
+        bank_verify = #{bankVerify,jdbcType=TINYINT},
+      </if>
+      <if test="indexCheck != null" >
+        index_check = #{indexCheck,jdbcType=TINYINT},
+      </if>
+      <if test="alipayVerify != null" >
+        alipay_verify = #{alipayVerify,jdbcType=BIT},
+      </if>
+      <if test="workVerify != null" >
+        work_verify = #{workVerify,jdbcType=TINYINT},
+      </if>
+      <if test="mobileStatus != null" >
+        mobile_status = #{mobileStatus,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.User" >
+    update dxd_user.user
+    set vid = #{vid,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=BIGINT},
+      truename = #{truename,jdbcType=CHAR},
+      id_card = #{idCard,jdbcType=CHAR},
+      ismarry = #{ismarry,jdbcType=CHAR},
+      province = #{province,jdbcType=CHAR},
+      city = #{city,jdbcType=CHAR},
+      lat = #{lat,jdbcType=CHAR},
+      lng = #{lng,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      residence_time = #{residenceTime,jdbcType=CHAR},
+      degree = #{degree,jdbcType=CHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      quota = #{quota,jdbcType=DECIMAL},
+      pay_pwd = #{payPwd,jdbcType=CHAR},
+      ctime = #{ctime,jdbcType=INTEGER},
+      taobao_verify = #{taobaoVerify,jdbcType=TINYINT},
+      credit_verify = #{creditVerify,jdbcType=TINYINT},
+      shebao_verify = #{shebaoVerify,jdbcType=TINYINT},
+      jd_verify = #{jdVerify,jdbcType=TINYINT},
+      mobile_verify = #{mobileVerify,jdbcType=TINYINT},
+      sex = #{sex,jdbcType=TINYINT},
+      contact_verify = #{contactVerify,jdbcType=TINYINT},
+      usermsg_verify = #{usermsgVerify,jdbcType=TINYINT},
+      zhima_verify = #{zhimaVerify,jdbcType=TINYINT},
+      age = #{age,jdbcType=INTEGER},
+      cert_time = #{certTime,jdbcType=INTEGER},
+      check_type = #{checkType,jdbcType=TINYINT},
+      cert_status = #{certStatus,jdbcType=TINYINT},
+      lowest_money = #{lowestMoney,jdbcType=INTEGER},
+      work_cert = #{workCert,jdbcType=TINYINT},
+      invite_code = #{inviteCode,jdbcType=CHAR},
+      be_invite_code = #{beInviteCode,jdbcType=CHAR},
+      edu_verify = #{eduVerify,jdbcType=TINYINT},
+      is_alliance = #{isAlliance,jdbcType=TINYINT},
+      waitdays = #{waitdays,jdbcType=INTEGER},
+      statustype = #{statustype,jdbcType=TINYINT},
+      checkstatus = #{checkstatus,jdbcType=TINYINT},
+      balance = #{balance,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT},
+      record_status = #{recordStatus,jdbcType=TINYINT},
+      bespeak_count = #{bespeakCount,jdbcType=INTEGER},
+      freeze_balance = #{freezeBalance,jdbcType=DECIMAL},
+      channel = #{channel,jdbcType=CHAR},
+      bank_verify = #{bankVerify,jdbcType=TINYINT},
+      index_check = #{indexCheck,jdbcType=TINYINT},
+      alipay_verify = #{alipayVerify,jdbcType=BIT},
+      work_verify = #{workVerify,jdbcType=TINYINT},
+      mobile_status = #{mobileStatus,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectUserByVid" resultMap="BaseResultMap" parameterType="string">
+  	select 
+    <include refid="Base_Column_List" />
+    from dxd_user.user
+    where vid = #{vid}
+  </select>
+  
+  <select id="selectBorrow" resultType="map" parameterType="string">
+  	SELECT u.vid,u.truename,b.borrow_no FROM dxd_caiwu.user_borrow b INNER JOIN 
+  	(SELECT vid,truename FROM dxd_user.`user` WHERE vid=#{vid}) u ON 
+  	b.vid=u.vid LIMIT 1
+  </select>
+  
+  <select id="selectAgeAndSexByVid" parameterType="string" resultType="map">
+  	SELECT age,sex FROM dxd_user.`user` WHERE vid=#{vid}
+  </select>
+  
+  <select id="selectProvinceByVid" parameterType="string" resultType="string">
+  	SELECT province FROM dxd_user.`user` WHERE vid=#{vid}
+  </select>
+  
+  <select id="selectUserMsgByVid" parameterType="string" resultType="map">
+  	SELECT age,ismarry,degree,province FROM dxd_user.`user` WHERE vid=#{vid}
+  </select>
+  
+  <select id="selectBinJcOverdueUsers" resultType="string">
+  	SELECT u.vid FROM dxd_urge.user_overdue o INNER JOIN (SELECT vid FROM dxd_user.`user` WHERE mobile IN 
+  		<foreach collection="mobiles" item="mobiles" index="index" open="(" close=")" separator=",">
+	      #{mobiles}
+	    </foreach>
+  	) u ON o.vid=u.vid GROUP BY u.vid
+  </select>
+  
+  <select id="selectVidByMobile" parameterType="string" resultType="string">
+  	SELECT vid FROM dxd_user.`user` WHERE mobile=#{mobile}
+  </select>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.WarningMsgMapper" >
+ 
+ <!-- <select id="selectAddress" resultType="map">
+ 	SELECT c.*,u.city,u.address liveAddress FROM dxd_user.`user` u RIGHT JOIN (SELECT t.*,v.work_location,v.work_address FROM dxd_user.user_woke_verify v RIGHT JOIN 
+ 	(SELECT r.vid,l.address FROM dxd_user.user_login_log l RIGHT JOIN (SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' 
+ 	AND vid NOT IN (SELECT vid FROM dxd_fk.warning WHERE type='Y0003' AND `status`=1) GROUP BY vid) r ON l.vid=r.vid) t ON t.vid=v.vid) c ON u.vid=c.vid
+ </select> -->
+ 
+ <select id="selectAddress" resultType="map">
+ 	SELECT a.*,l.login_time,l.address FROM dxd_user.user_login_log l RIGHT JOIN (SELECT vid,UNIX_TIMESTAMP(DATE(FROM_UNIXTIME((MAX(ctime))))) ctime 
+ 	FROM dxd_caiwu.user_borrow WHERE vid IN (SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' AND vid NOT IN 
+ 	(SELECT vid FROM dxd_fk.warning WHERE `status`=1 AND type='Y0003')  GROUP BY vid) AND is_success=2 GROUP BY vid) a ON l.vid=a.vid
+ </select>
+ 
+ <select id="selectEmptyMobile" resultType="map">
+ 	SELECT t.*,u.mobile FROM dxd_user.`user` u RIGHT JOIN (SELECT vid,MAX(repay_time) repay_time FROM dxd_caiwu.user_repayment WHERE vid IN 
+ 	(SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' AND vid NOT IN 
+ 	(SELECT vid FROM dxd_fk.warning WHERE `status`=1 AND type='Y0004') GROUP BY vid) GROUP BY vid) t ON u.vid=t.vid
+ </select>
+ 
+</mapper>

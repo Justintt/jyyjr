@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.TdTbBaseMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.TdTbBase" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="user_level" property="userLevel" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="nick_name" property="nickName" jdbcType="CHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="real_name" property="realName" jdbcType="CHAR" />
+    <result column="identity_code" property="identityCode" jdbcType="CHAR" />
+    <result column="vip_count" property="vipCount" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, user_name, email, user_level, name, nick_name, gender, mobile, real_name, 
+    identity_code, vip_count, ctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_tb_base
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from td_tb_base
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.TdTbBase" >
+    insert into td_tb_base (id, vid, user_name, 
+      email, user_level, name, nick_name, 
+      gender, mobile, real_name, identity_code, 
+      vip_count, ctime)
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{userLevel,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{nickName,jdbcType=CHAR}, 
+      #{gender,jdbcType=CHAR}, #{mobile,jdbcType=CHAR}, #{realName,jdbcType=CHAR}, #{identityCode,jdbcType=CHAR}, 
+      #{vipCount,jdbcType=INTEGER}, #{ctime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.TdTbBase" >
+    insert into td_tb_base
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="userLevel != null" >
+        user_level,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="identityCode != null" >
+        identity_code,
+      </if>
+      <if test="vipCount != null" >
+        vip_count,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+        #{userLevel,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=CHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=CHAR},
+      </if>
+      <if test="identityCode != null" >
+        #{identityCode,jdbcType=CHAR},
+      </if>
+      <if test="vipCount != null" >
+        #{vipCount,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.TdTbBase" >
+    update td_tb_base
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevel != null" >
+        user_level = #{userLevel,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=CHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=CHAR},
+      </if>
+      <if test="identityCode != null" >
+        identity_code = #{identityCode,jdbcType=CHAR},
+      </if>
+      <if test="vipCount != null" >
+        vip_count = #{vipCount,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.TdTbBase" >
+    update td_tb_base
+    set vid = #{vid,jdbcType=CHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      user_level = #{userLevel,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      nick_name = #{nickName,jdbcType=CHAR},
+      gender = #{gender,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=CHAR},
+      real_name = #{realName,jdbcType=CHAR},
+      identity_code = #{identityCode,jdbcType=CHAR},
+      vip_count = #{vipCount,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryCtimeByVid" parameterType="string" resultType="int">
+		SELECT ctime FROM jyy_fk_db.td_tb_base WHERE vid=#{vid} LIMIT 1
+  </select>
+</mapper>

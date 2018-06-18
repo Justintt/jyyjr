@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.MobileClearYYMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.MobileClearYY" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="BIGINT" />
+    <result column="ex_mobile_count" property="exMobileCount" jdbcType="INTEGER" />
+    <result column="ex_mobile_call_count" property="exMobileCallCount" jdbcType="INTEGER" />
+    <result column="other_count" property="otherCount" jdbcType="INTEGER" />
+    <result column="unex_mobile_call_count" property="unexMobileCallCount" jdbcType="INTEGER" />
+    <result column="unex_mobile_call_avgtime" property="unexMobileCallAvgtime" jdbcType="CHAR" />
+    <result column="not_in_mobile_zj_one_month_rate" property="notInMobileZjOneMonthRate" jdbcType="CHAR" />
+    <result column="not_in_mobile_zj_two_to_three_rate" property="notInMobileZjTwoToThreeRate" jdbcType="CHAR" />
+    <result column="not_in_mobile_all_one_month_rate" property="notInMobileAllOneMonthRate" jdbcType="CHAR" />
+    <result column="not_in_mobile_all_two_to_three_rate" property="notInMobileAllTwoToThreeRate" jdbcType="CHAR" />
+    <result column="ex_one_month_number_count" property="exOneMonthNumberCount" jdbcType="INTEGER" />
+    <result column="ex_one_month_action_count" property="exOneMonthActionCount" jdbcType="INTEGER" />
+    <result column="ex_one_month_passive_count" property="exOneMonthPassiveCount" jdbcType="INTEGER" />
+    <result column="ex_one_month_zjavg_call_time" property="exOneMonthZjavgCallTime" jdbcType="CHAR" />
+    <result column="ex_one_month_bjavg_call_time" property="exOneMonthBjavgCallTime" jdbcType="CHAR" />
+    <result column="ex_two_to_three_month_number_count" property="exTwoToThreeMonthNumberCount" jdbcType="INTEGER" />
+    <result column="ex_two_to_three_month_action_count" property="exTwoToThreeMonthActionCount" jdbcType="INTEGER" />
+    <result column="ex_two_to_three_month_passive_count" property="exTwoToThreeMonthPassiveCount" jdbcType="INTEGER" />
+    <result column="ex_two_to_three_month_zjavg_call_time" property="exTwoToThreeMonthZjavgCallTime" jdbcType="CHAR" />
+    <result column="ex_two_to_three_month_bjavg_call_time" property="exTwoToThreeMonthBjavgCallTime" jdbcType="CHAR" />
+    <result column="clex_one_month_number_count" property="clexOneMonthNumberCount" jdbcType="INTEGER" />
+    <result column="clex_one_month_action_count" property="clexOneMonthActionCount" jdbcType="INTEGER" />
+    <result column="clex_one_month_passive_count" property="clexOneMonthPassiveCount" jdbcType="INTEGER" />
+    <result column="clex_one_month_zjavg_call_time" property="clexOneMonthZjavgCallTime" jdbcType="CHAR" />
+    <result column="clex_one_month_bjavg_call_time" property="clexOneMonthBjavgCallTime" jdbcType="CHAR" />
+    <result column="clex_two_to_three_month_number_count" property="clexTwoToThreeMonthNumberCount" jdbcType="INTEGER" />
+    <result column="clex_two_to_three_month_action_count" property="clexTwoToThreeMonthActionCount" jdbcType="INTEGER" />
+    <result column="clex_two_to_three_month_passive_count" property="clexTwoToThreeMonthPassiveCount" jdbcType="INTEGER" />
+    <result column="clex_two_to_three_month_zjavg_call_time" property="clexTwoToThreeMonthZjavgCallTime" jdbcType="CHAR" />
+    <result column="clex_two_to_three_month_bjavg_call_time" property="clexTwoToThreeMonthBjavgCallTime" jdbcType="CHAR" />
+    <result column="apply_one_mbook_call" property="applyOneMbookCall" jdbcType="INTEGER" />
+    <result column="apply_two_to_three_mbook_call" property="applyTwoToThreeMbookCall" jdbcType="INTEGER" />
+    <result column="cl_apply_one_mbook_call_three" property="clApplyOneMbookCallThree" jdbcType="INTEGER" />
+    <result column="cl_apply_two_to_three_mbook_call_three" property="clApplyTwoToThreeMbookCallThree" jdbcType="INTEGER" />
+    <result column="cl_apply_one_mbook_call_five" property="clApplyOneMbookCallFive" jdbcType="INTEGER" />
+    <result column="cl_apply_two_to_three_mbook_call_five" property="clApplyTwoToThreeMbookCallFive" jdbcType="INTEGER" />
+    <result column="night_zero_to_five_call" property="nightZeroToFiveCall" jdbcType="INTEGER" />
+    <result column="repay_money" property="repayMoney" jdbcType="CHAR" />
+    <result column="is_overdue" property="isOverdue" jdbcType="CHAR" />
+    <result column="hours" property="hours" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="status_new" property="statusNew" jdbcType="CHAR" />
+    <result column="td_score" property="tdScore" jdbcType="INTEGER" />
+    <result column="seven_day" property="sevenDay" jdbcType="INTEGER" />
+    <result column="clex_mobile_in_call_count" property="clexMobileInCallCount" jdbcType="INTEGER" />
+    <result column="clex_mobile_in_one_month_call_count" property="clexMobileInOneMonthCallCount" jdbcType="INTEGER" />
+    <result column="get_td_seven_day" property="getTdSevenDay" jdbcType="INTEGER" />
+    <result column="frist_seven_day" property="fristSevenDay" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, mobile, ex_mobile_count, ex_mobile_call_count, other_count, unex_mobile_call_count, 
+    unex_mobile_call_avgtime, not_in_mobile_zj_one_month_rate, not_in_mobile_zj_two_to_three_rate, 
+    not_in_mobile_all_one_month_rate, not_in_mobile_all_two_to_three_rate, ex_one_month_number_count, 
+    ex_one_month_action_count, ex_one_month_passive_count, ex_one_month_zjavg_call_time, 
+    ex_one_month_bjavg_call_time, ex_two_to_three_month_number_count, ex_two_to_three_month_action_count, 
+    ex_two_to_three_month_passive_count, ex_two_to_three_month_zjavg_call_time, ex_two_to_three_month_bjavg_call_time, 
+    clex_one_month_number_count, clex_one_month_action_count, clex_one_month_passive_count, 
+    clex_one_month_zjavg_call_time, clex_one_month_bjavg_call_time, clex_two_to_three_month_number_count, 
+    clex_two_to_three_month_action_count, clex_two_to_three_month_passive_count, clex_two_to_three_month_zjavg_call_time, 
+    clex_two_to_three_month_bjavg_call_time, apply_one_mbook_call, apply_two_to_three_mbook_call, 
+    cl_apply_one_mbook_call_three, cl_apply_two_to_three_mbook_call_three, cl_apply_one_mbook_call_five, 
+    cl_apply_two_to_three_mbook_call_five, night_zero_to_five_call, repay_money, is_overdue, 
+    hours, status, type, flag, status_new, td_score, seven_day, clex_mobile_in_call_count, 
+    clex_mobile_in_one_month_call_count, get_td_seven_day, frist_seven_day, ctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_mobile_clear_yy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_mobile_clear_yy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.MobileClearYY" >
+    insert into user_mobile_clear_yy (id, vid, mobile, 
+      ex_mobile_count, ex_mobile_call_count, other_count, 
+      unex_mobile_call_count, unex_mobile_call_avgtime, 
+      not_in_mobile_zj_one_month_rate, not_in_mobile_zj_two_to_three_rate, 
+      not_in_mobile_all_one_month_rate, not_in_mobile_all_two_to_three_rate, 
+      ex_one_month_number_count, ex_one_month_action_count, 
+      ex_one_month_passive_count, ex_one_month_zjavg_call_time, 
+      ex_one_month_bjavg_call_time, ex_two_to_three_month_number_count, 
+      ex_two_to_three_month_action_count, ex_two_to_three_month_passive_count, 
+      ex_two_to_three_month_zjavg_call_time, ex_two_to_three_month_bjavg_call_time, 
+      clex_one_month_number_count, clex_one_month_action_count, 
+      clex_one_month_passive_count, clex_one_month_zjavg_call_time, 
+      clex_one_month_bjavg_call_time, clex_two_to_three_month_number_count, 
+      clex_two_to_three_month_action_count, clex_two_to_three_month_passive_count, 
+      clex_two_to_three_month_zjavg_call_time, clex_two_to_three_month_bjavg_call_time, 
+      apply_one_mbook_call, apply_two_to_three_mbook_call, 
+      cl_apply_one_mbook_call_three, cl_apply_two_to_three_mbook_call_three, 
+      cl_apply_one_mbook_call_five, cl_apply_two_to_three_mbook_call_five, 
+      night_zero_to_five_call, repay_money, is_overdue, 
+      hours, status, type, flag, 
+      status_new, td_score, seven_day, 
+      clex_mobile_in_call_count, clex_mobile_in_one_month_call_count, 
+      get_td_seven_day, frist_seven_day, ctime
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{mobile,jdbcType=BIGINT}, 
+      #{exMobileCount,jdbcType=INTEGER}, #{exMobileCallCount,jdbcType=INTEGER}, #{otherCount,jdbcType=INTEGER}, 
+      #{unexMobileCallCount,jdbcType=INTEGER}, #{unexMobileCallAvgtime,jdbcType=CHAR}, 
+      #{notInMobileZjOneMonthRate,jdbcType=CHAR}, #{notInMobileZjTwoToThreeRate,jdbcType=CHAR}, 
+      #{notInMobileAllOneMonthRate,jdbcType=CHAR}, #{notInMobileAllTwoToThreeRate,jdbcType=CHAR}, 
+      #{exOneMonthNumberCount,jdbcType=INTEGER}, #{exOneMonthActionCount,jdbcType=INTEGER}, 
+      #{exOneMonthPassiveCount,jdbcType=INTEGER}, #{exOneMonthZjavgCallTime,jdbcType=CHAR}, 
+      #{exOneMonthBjavgCallTime,jdbcType=CHAR}, #{exTwoToThreeMonthNumberCount,jdbcType=INTEGER}, 
+      #{exTwoToThreeMonthActionCount,jdbcType=INTEGER}, #{exTwoToThreeMonthPassiveCount,jdbcType=INTEGER}, 
+      #{exTwoToThreeMonthZjavgCallTime,jdbcType=CHAR}, #{exTwoToThreeMonthBjavgCallTime,jdbcType=CHAR}, 
+      #{clexOneMonthNumberCount,jdbcType=INTEGER}, #{clexOneMonthActionCount,jdbcType=INTEGER}, 
+      #{clexOneMonthPassiveCount,jdbcType=INTEGER}, #{clexOneMonthZjavgCallTime,jdbcType=CHAR}, 
+      #{clexOneMonthBjavgCallTime,jdbcType=CHAR}, #{clexTwoToThreeMonthNumberCount,jdbcType=INTEGER}, 
+      #{clexTwoToThreeMonthActionCount,jdbcType=INTEGER}, #{clexTwoToThreeMonthPassiveCount,jdbcType=INTEGER}, 
+      #{clexTwoToThreeMonthZjavgCallTime,jdbcType=CHAR}, #{clexTwoToThreeMonthBjavgCallTime,jdbcType=CHAR}, 
+      #{applyOneMbookCall,jdbcType=INTEGER}, #{applyTwoToThreeMbookCall,jdbcType=INTEGER}, 
+      #{clApplyOneMbookCallThree,jdbcType=INTEGER}, #{clApplyTwoToThreeMbookCallThree,jdbcType=INTEGER}, 
+      #{clApplyOneMbookCallFive,jdbcType=INTEGER}, #{clApplyTwoToThreeMbookCallFive,jdbcType=INTEGER}, 
+      #{nightZeroToFiveCall,jdbcType=INTEGER}, #{repayMoney,jdbcType=CHAR}, #{isOverdue,jdbcType=CHAR}, 
+      #{hours,jdbcType=CHAR}, #{status,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{flag,jdbcType=INTEGER}, 
+      #{statusNew,jdbcType=CHAR}, #{tdScore,jdbcType=INTEGER}, #{sevenDay,jdbcType=INTEGER}, 
+      #{clexMobileInCallCount,jdbcType=INTEGER}, #{clexMobileInOneMonthCallCount,jdbcType=INTEGER}, 
+      #{getTdSevenDay,jdbcType=INTEGER}, #{fristSevenDay,jdbcType=INTEGER}, #{ctime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.MobileClearYY" >
+    insert into user_mobile_clear_yy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="exMobileCount != null" >
+        ex_mobile_count,
+      </if>
+      <if test="exMobileCallCount != null" >
+        ex_mobile_call_count,
+      </if>
+      <if test="otherCount != null" >
+        other_count,
+      </if>
+      <if test="unexMobileCallCount != null" >
+        unex_mobile_call_count,
+      </if>
+      <if test="unexMobileCallAvgtime != null" >
+        unex_mobile_call_avgtime,
+      </if>
+      <if test="notInMobileZjOneMonthRate != null" >
+        not_in_mobile_zj_one_month_rate,
+      </if>
+      <if test="notInMobileZjTwoToThreeRate != null" >
+        not_in_mobile_zj_two_to_three_rate,
+      </if>
+      <if test="notInMobileAllOneMonthRate != null" >
+        not_in_mobile_all_one_month_rate,
+      </if>
+      <if test="notInMobileAllTwoToThreeRate != null" >
+        not_in_mobile_all_two_to_three_rate,
+      </if>
+      <if test="exOneMonthNumberCount != null" >
+        ex_one_month_number_count,
+      </if>
+      <if test="exOneMonthActionCount != null" >
+        ex_one_month_action_count,
+      </if>
+      <if test="exOneMonthPassiveCount != null" >
+        ex_one_month_passive_count,
+      </if>
+      <if test="exOneMonthZjavgCallTime != null" >
+        ex_one_month_zjavg_call_time,
+      </if>
+      <if test="exOneMonthBjavgCallTime != null" >
+        ex_one_month_bjavg_call_time,
+      </if>
+      <if test="exTwoToThreeMonthNumberCount != null" >
+        ex_two_to_three_month_number_count,
+      </if>
+      <if test="exTwoToThreeMonthActionCount != null" >
+        ex_two_to_three_month_action_count,
+      </if>
+      <if test="exTwoToThreeMonthPassiveCount != null" >
+        ex_two_to_three_month_passive_count,
+      </if>
+      <if test="exTwoToThreeMonthZjavgCallTime != null" >
+        ex_two_to_three_month_zjavg_call_time,
+      </if>
+      <if test="exTwoToThreeMonthBjavgCallTime != null" >
+        ex_two_to_three_month_bjavg_call_time,
+      </if>
+      <if test="clexOneMonthNumberCount != null" >
+        clex_one_month_number_count,
+      </if>
+      <if test="clexOneMonthActionCount != null" >
+        clex_one_month_action_count,
+      </if>
+      <if test="clexOneMonthPassiveCount != null" >
+        clex_one_month_passive_count,
+      </if>
+      <if test="clexOneMonthZjavgCallTime != null" >
+        clex_one_month_zjavg_call_time,
+      </if>
+      <if test="clexOneMonthBjavgCallTime != null" >
+        clex_one_month_bjavg_call_time,
+      </if>
+      <if test="clexTwoToThreeMonthNumberCount != null" >
+        clex_two_to_three_month_number_count,
+      </if>
+      <if test="clexTwoToThreeMonthActionCount != null" >
+        clex_two_to_three_month_action_count,
+      </if>
+      <if test="clexTwoToThreeMonthPassiveCount != null" >
+        clex_two_to_three_month_passive_count,
+      </if>
+      <if test="clexTwoToThreeMonthZjavgCallTime != null" >
+        clex_two_to_three_month_zjavg_call_time,
+      </if>
+      <if test="clexTwoToThreeMonthBjavgCallTime != null" >
+        clex_two_to_three_month_bjavg_call_time,
+      </if>
+      <if test="applyOneMbookCall != null" >
+        apply_one_mbook_call,
+      </if>
+      <if test="applyTwoToThreeMbookCall != null" >
+        apply_two_to_three_mbook_call,
+      </if>
+      <if test="clApplyOneMbookCallThree != null" >
+        cl_apply_one_mbook_call_three,
+      </if>
+      <if test="clApplyTwoToThreeMbookCallThree != null" >
+        cl_apply_two_to_three_mbook_call_three,
+      </if>
+      <if test="clApplyOneMbookCallFive != null" >
+        cl_apply_one_mbook_call_five,
+      </if>
+      <if test="clApplyTwoToThreeMbookCallFive != null" >
+        cl_apply_two_to_three_mbook_call_five,
+      </if>
+      <if test="nightZeroToFiveCall != null" >
+        night_zero_to_five_call,
+      </if>
+      <if test="repayMoney != null" >
+        repay_money,
+      </if>
+      <if test="isOverdue != null" >
+        is_overdue,
+      </if>
+      <if test="hours != null" >
+        hours,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="statusNew != null" >
+        status_new,
+      </if>
+      <if test="tdScore != null" >
+        td_score,
+      </if>
+      <if test="sevenDay != null" >
+        seven_day,
+      </if>
+      <if test="clexMobileInCallCount != null" >
+        clex_mobile_in_call_count,
+      </if>
+      <if test="clexMobileInOneMonthCallCount != null" >
+        clex_mobile_in_one_month_call_count,
+      </if>
+      <if test="getTdSevenDay != null" >
+        get_td_seven_day,
+      </if>
+      <if test="fristSevenDay != null" >
+        frist_seven_day,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="exMobileCount != null" >
+        #{exMobileCount,jdbcType=INTEGER},
+      </if>
+      <if test="exMobileCallCount != null" >
+        #{exMobileCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="otherCount != null" >
+        #{otherCount,jdbcType=INTEGER},
+      </if>
+      <if test="unexMobileCallCount != null" >
+        #{unexMobileCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="unexMobileCallAvgtime != null" >
+        #{unexMobileCallAvgtime,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileZjOneMonthRate != null" >
+        #{notInMobileZjOneMonthRate,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileZjTwoToThreeRate != null" >
+        #{notInMobileZjTwoToThreeRate,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileAllOneMonthRate != null" >
+        #{notInMobileAllOneMonthRate,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileAllTwoToThreeRate != null" >
+        #{notInMobileAllTwoToThreeRate,jdbcType=CHAR},
+      </if>
+      <if test="exOneMonthNumberCount != null" >
+        #{exOneMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="exOneMonthActionCount != null" >
+        #{exOneMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="exOneMonthPassiveCount != null" >
+        #{exOneMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="exOneMonthZjavgCallTime != null" >
+        #{exOneMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="exOneMonthBjavgCallTime != null" >
+        #{exOneMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="exTwoToThreeMonthNumberCount != null" >
+        #{exTwoToThreeMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="exTwoToThreeMonthActionCount != null" >
+        #{exTwoToThreeMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="exTwoToThreeMonthPassiveCount != null" >
+        #{exTwoToThreeMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="exTwoToThreeMonthZjavgCallTime != null" >
+        #{exTwoToThreeMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="exTwoToThreeMonthBjavgCallTime != null" >
+        #{exTwoToThreeMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexOneMonthNumberCount != null" >
+        #{clexOneMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexOneMonthActionCount != null" >
+        #{clexOneMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexOneMonthPassiveCount != null" >
+        #{clexOneMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexOneMonthZjavgCallTime != null" >
+        #{clexOneMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexOneMonthBjavgCallTime != null" >
+        #{clexOneMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexTwoToThreeMonthNumberCount != null" >
+        #{clexTwoToThreeMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexTwoToThreeMonthActionCount != null" >
+        #{clexTwoToThreeMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexTwoToThreeMonthPassiveCount != null" >
+        #{clexTwoToThreeMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexTwoToThreeMonthZjavgCallTime != null" >
+        #{clexTwoToThreeMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexTwoToThreeMonthBjavgCallTime != null" >
+        #{clexTwoToThreeMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="applyOneMbookCall != null" >
+        #{applyOneMbookCall,jdbcType=INTEGER},
+      </if>
+      <if test="applyTwoToThreeMbookCall != null" >
+        #{applyTwoToThreeMbookCall,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyOneMbookCallThree != null" >
+        #{clApplyOneMbookCallThree,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyTwoToThreeMbookCallThree != null" >
+        #{clApplyTwoToThreeMbookCallThree,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyOneMbookCallFive != null" >
+        #{clApplyOneMbookCallFive,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyTwoToThreeMbookCallFive != null" >
+        #{clApplyTwoToThreeMbookCallFive,jdbcType=INTEGER},
+      </if>
+      <if test="nightZeroToFiveCall != null" >
+        #{nightZeroToFiveCall,jdbcType=INTEGER},
+      </if>
+      <if test="repayMoney != null" >
+        #{repayMoney,jdbcType=CHAR},
+      </if>
+      <if test="isOverdue != null" >
+        #{isOverdue,jdbcType=CHAR},
+      </if>
+      <if test="hours != null" >
+        #{hours,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="statusNew != null" >
+        #{statusNew,jdbcType=CHAR},
+      </if>
+      <if test="tdScore != null" >
+        #{tdScore,jdbcType=INTEGER},
+      </if>
+      <if test="sevenDay != null" >
+        #{sevenDay,jdbcType=INTEGER},
+      </if>
+      <if test="clexMobileInCallCount != null" >
+        #{clexMobileInCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexMobileInOneMonthCallCount != null" >
+        #{clexMobileInOneMonthCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="getTdSevenDay != null" >
+        #{getTdSevenDay,jdbcType=INTEGER},
+      </if>
+      <if test="fristSevenDay != null" >
+        #{fristSevenDay,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.MobileClearYY" >
+    update user_mobile_clear_yy
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="exMobileCount != null" >
+        ex_mobile_count = #{exMobileCount,jdbcType=INTEGER},
+      </if>
+      <if test="exMobileCallCount != null" >
+        ex_mobile_call_count = #{exMobileCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="otherCount != null" >
+        other_count = #{otherCount,jdbcType=INTEGER},
+      </if>
+      <if test="unexMobileCallCount != null" >
+        unex_mobile_call_count = #{unexMobileCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="unexMobileCallAvgtime != null" >
+        unex_mobile_call_avgtime = #{unexMobileCallAvgtime,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileZjOneMonthRate != null" >
+        not_in_mobile_zj_one_month_rate = #{notInMobileZjOneMonthRate,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileZjTwoToThreeRate != null" >
+        not_in_mobile_zj_two_to_three_rate = #{notInMobileZjTwoToThreeRate,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileAllOneMonthRate != null" >
+        not_in_mobile_all_one_month_rate = #{notInMobileAllOneMonthRate,jdbcType=CHAR},
+      </if>
+      <if test="notInMobileAllTwoToThreeRate != null" >
+        not_in_mobile_all_two_to_three_rate = #{notInMobileAllTwoToThreeRate,jdbcType=CHAR},
+      </if>
+      <if test="exOneMonthNumberCount != null" >
+        ex_one_month_number_count = #{exOneMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="exOneMonthActionCount != null" >
+        ex_one_month_action_count = #{exOneMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="exOneMonthPassiveCount != null" >
+        ex_one_month_passive_count = #{exOneMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="exOneMonthZjavgCallTime != null" >
+        ex_one_month_zjavg_call_time = #{exOneMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="exOneMonthBjavgCallTime != null" >
+        ex_one_month_bjavg_call_time = #{exOneMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="exTwoToThreeMonthNumberCount != null" >
+        ex_two_to_three_month_number_count = #{exTwoToThreeMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="exTwoToThreeMonthActionCount != null" >
+        ex_two_to_three_month_action_count = #{exTwoToThreeMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="exTwoToThreeMonthPassiveCount != null" >
+        ex_two_to_three_month_passive_count = #{exTwoToThreeMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="exTwoToThreeMonthZjavgCallTime != null" >
+        ex_two_to_three_month_zjavg_call_time = #{exTwoToThreeMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="exTwoToThreeMonthBjavgCallTime != null" >
+        ex_two_to_three_month_bjavg_call_time = #{exTwoToThreeMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexOneMonthNumberCount != null" >
+        clex_one_month_number_count = #{clexOneMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexOneMonthActionCount != null" >
+        clex_one_month_action_count = #{clexOneMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexOneMonthPassiveCount != null" >
+        clex_one_month_passive_count = #{clexOneMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexOneMonthZjavgCallTime != null" >
+        clex_one_month_zjavg_call_time = #{clexOneMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexOneMonthBjavgCallTime != null" >
+        clex_one_month_bjavg_call_time = #{clexOneMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexTwoToThreeMonthNumberCount != null" >
+        clex_two_to_three_month_number_count = #{clexTwoToThreeMonthNumberCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexTwoToThreeMonthActionCount != null" >
+        clex_two_to_three_month_action_count = #{clexTwoToThreeMonthActionCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexTwoToThreeMonthPassiveCount != null" >
+        clex_two_to_three_month_passive_count = #{clexTwoToThreeMonthPassiveCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexTwoToThreeMonthZjavgCallTime != null" >
+        clex_two_to_three_month_zjavg_call_time = #{clexTwoToThreeMonthZjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="clexTwoToThreeMonthBjavgCallTime != null" >
+        clex_two_to_three_month_bjavg_call_time = #{clexTwoToThreeMonthBjavgCallTime,jdbcType=CHAR},
+      </if>
+      <if test="applyOneMbookCall != null" >
+        apply_one_mbook_call = #{applyOneMbookCall,jdbcType=INTEGER},
+      </if>
+      <if test="applyTwoToThreeMbookCall != null" >
+        apply_two_to_three_mbook_call = #{applyTwoToThreeMbookCall,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyOneMbookCallThree != null" >
+        cl_apply_one_mbook_call_three = #{clApplyOneMbookCallThree,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyTwoToThreeMbookCallThree != null" >
+        cl_apply_two_to_three_mbook_call_three = #{clApplyTwoToThreeMbookCallThree,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyOneMbookCallFive != null" >
+        cl_apply_one_mbook_call_five = #{clApplyOneMbookCallFive,jdbcType=INTEGER},
+      </if>
+      <if test="clApplyTwoToThreeMbookCallFive != null" >
+        cl_apply_two_to_three_mbook_call_five = #{clApplyTwoToThreeMbookCallFive,jdbcType=INTEGER},
+      </if>
+      <if test="nightZeroToFiveCall != null" >
+        night_zero_to_five_call = #{nightZeroToFiveCall,jdbcType=INTEGER},
+      </if>
+      <if test="repayMoney != null" >
+        repay_money = #{repayMoney,jdbcType=CHAR},
+      </if>
+      <if test="isOverdue != null" >
+        is_overdue = #{isOverdue,jdbcType=CHAR},
+      </if>
+      <if test="hours != null" >
+        hours = #{hours,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="statusNew != null" >
+        status_new = #{statusNew,jdbcType=CHAR},
+      </if>
+      <if test="tdScore != null" >
+        td_score = #{tdScore,jdbcType=INTEGER},
+      </if>
+      <if test="sevenDay != null" >
+        seven_day = #{sevenDay,jdbcType=INTEGER},
+      </if>
+      <if test="clexMobileInCallCount != null" >
+        clex_mobile_in_call_count = #{clexMobileInCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="clexMobileInOneMonthCallCount != null" >
+        clex_mobile_in_one_month_call_count = #{clexMobileInOneMonthCallCount,jdbcType=INTEGER},
+      </if>
+      <if test="getTdSevenDay != null" >
+        get_td_seven_day = #{getTdSevenDay,jdbcType=INTEGER},
+      </if>
+      <if test="fristSevenDay != null" >
+        frist_seven_day = #{fristSevenDay,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.MobileClearYY" >
+    update user_mobile_clear_yy
+    set vid = #{vid,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=BIGINT},
+      ex_mobile_count = #{exMobileCount,jdbcType=INTEGER},
+      ex_mobile_call_count = #{exMobileCallCount,jdbcType=INTEGER},
+      other_count = #{otherCount,jdbcType=INTEGER},
+      unex_mobile_call_count = #{unexMobileCallCount,jdbcType=INTEGER},
+      unex_mobile_call_avgtime = #{unexMobileCallAvgtime,jdbcType=CHAR},
+      not_in_mobile_zj_one_month_rate = #{notInMobileZjOneMonthRate,jdbcType=CHAR},
+      not_in_mobile_zj_two_to_three_rate = #{notInMobileZjTwoToThreeRate,jdbcType=CHAR},
+      not_in_mobile_all_one_month_rate = #{notInMobileAllOneMonthRate,jdbcType=CHAR},
+      not_in_mobile_all_two_to_three_rate = #{notInMobileAllTwoToThreeRate,jdbcType=CHAR},
+      ex_one_month_number_count = #{exOneMonthNumberCount,jdbcType=INTEGER},
+      ex_one_month_action_count = #{exOneMonthActionCount,jdbcType=INTEGER},
+      ex_one_month_passive_count = #{exOneMonthPassiveCount,jdbcType=INTEGER},
+      ex_one_month_zjavg_call_time = #{exOneMonthZjavgCallTime,jdbcType=CHAR},
+      ex_one_month_bjavg_call_time = #{exOneMonthBjavgCallTime,jdbcType=CHAR},
+      ex_two_to_three_month_number_count = #{exTwoToThreeMonthNumberCount,jdbcType=INTEGER},
+      ex_two_to_three_month_action_count = #{exTwoToThreeMonthActionCount,jdbcType=INTEGER},
+      ex_two_to_three_month_passive_count = #{exTwoToThreeMonthPassiveCount,jdbcType=INTEGER},
+      ex_two_to_three_month_zjavg_call_time = #{exTwoToThreeMonthZjavgCallTime,jdbcType=CHAR},
+      ex_two_to_three_month_bjavg_call_time = #{exTwoToThreeMonthBjavgCallTime,jdbcType=CHAR},
+      clex_one_month_number_count = #{clexOneMonthNumberCount,jdbcType=INTEGER},
+      clex_one_month_action_count = #{clexOneMonthActionCount,jdbcType=INTEGER},
+      clex_one_month_passive_count = #{clexOneMonthPassiveCount,jdbcType=INTEGER},
+      clex_one_month_zjavg_call_time = #{clexOneMonthZjavgCallTime,jdbcType=CHAR},
+      clex_one_month_bjavg_call_time = #{clexOneMonthBjavgCallTime,jdbcType=CHAR},
+      clex_two_to_three_month_number_count = #{clexTwoToThreeMonthNumberCount,jdbcType=INTEGER},
+      clex_two_to_three_month_action_count = #{clexTwoToThreeMonthActionCount,jdbcType=INTEGER},
+      clex_two_to_three_month_passive_count = #{clexTwoToThreeMonthPassiveCount,jdbcType=INTEGER},
+      clex_two_to_three_month_zjavg_call_time = #{clexTwoToThreeMonthZjavgCallTime,jdbcType=CHAR},
+      clex_two_to_three_month_bjavg_call_time = #{clexTwoToThreeMonthBjavgCallTime,jdbcType=CHAR},
+      apply_one_mbook_call = #{applyOneMbookCall,jdbcType=INTEGER},
+      apply_two_to_three_mbook_call = #{applyTwoToThreeMbookCall,jdbcType=INTEGER},
+      cl_apply_one_mbook_call_three = #{clApplyOneMbookCallThree,jdbcType=INTEGER},
+      cl_apply_two_to_three_mbook_call_three = #{clApplyTwoToThreeMbookCallThree,jdbcType=INTEGER},
+      cl_apply_one_mbook_call_five = #{clApplyOneMbookCallFive,jdbcType=INTEGER},
+      cl_apply_two_to_three_mbook_call_five = #{clApplyTwoToThreeMbookCallFive,jdbcType=INTEGER},
+      night_zero_to_five_call = #{nightZeroToFiveCall,jdbcType=INTEGER},
+      repay_money = #{repayMoney,jdbcType=CHAR},
+      is_overdue = #{isOverdue,jdbcType=CHAR},
+      hours = #{hours,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR},
+      type = #{type,jdbcType=CHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      status_new = #{statusNew,jdbcType=CHAR},
+      td_score = #{tdScore,jdbcType=INTEGER},
+      seven_day = #{sevenDay,jdbcType=INTEGER},
+      clex_mobile_in_call_count = #{clexMobileInCallCount,jdbcType=INTEGER},
+      clex_mobile_in_one_month_call_count = #{clexMobileInOneMonthCallCount,jdbcType=INTEGER},
+      get_td_seven_day = #{getTdSevenDay,jdbcType=INTEGER},
+      frist_seven_day = #{fristSevenDay,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectMobileClearYYByVid" parameterType="string" resultType="map">
+  	SELECT other_count,other_count-ex_mobile_count,apply_one_mbook_call,apply_two_to_three_mbook_call,not_in_mobile_all_one_month_rate,
+  	ex_mobile_count,unex_mobile_call_count FROM dxd_fk.user_mobile_clear_yy WHERE vid=#{vid} LIMIT 1
+  </select>
+  <select id="selectAcaByVid" parameterType="string" resultType="map">
+  	SELECT other_count-ex_mobile_count as bin_contact_cnt_clr,inbook_count as bin_contact_call_cnt_clr,clex_one_month_action_count+clex_two_to_three_month_action_count as bin_call_atv_cnt_clr,
+  	clex_one_month_action_count+clex_one_month_passive_count+clex_two_to_three_month_action_count+clex_two_to_three_month_passive_count as bin_call_cnt_clr,
+  	(clex_one_month_action_count+clex_two_to_three_month_action_count)/(clex_one_month_action_count+clex_one_month_passive_count+clex_two_to_three_month_action_count+clex_two_to_three_month_passive_count) as 
+  	bin_call_atv_rate_clr,unex_mobile_call_count as bin_call_ap_number_clr,family_callcount as bin_home_status FROM dxd_fk.user_mobile_clear_yy WHERE vid=#{vid} LIMIT 1
+  </select>
+  
+  <select id="selectBinCallIoCnt" parameterType="string" resultType="java.lang.Integer">
+  	SELECT unex_mobile_call_count FROM dxd_fk.user_mobile_clear_yy WHERE vid=#{vid}
+  </select>
+</mapper>

@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.zxdao.AnRiskParamMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.AnRiskParam" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="BIGINT" />
+    <result column="report_number" property="reportNumber" jdbcType="VARCHAR" />
+    <result column="a001" property="a001" jdbcType="CHAR" />
+    <result column="a002" property="a002" jdbcType="CHAR" />
+    <result column="b001" property="b001" jdbcType="CHAR" />
+    <result column="b002" property="b002" jdbcType="CHAR" />
+    <result column="b003" property="b003" jdbcType="CHAR" />
+    <result column="b004" property="b004" jdbcType="CHAR" />
+    <result column="b005" property="b005" jdbcType="CHAR" />
+    <result column="c001" property="c001" jdbcType="CHAR" />
+    <result column="c002" property="c002" jdbcType="CHAR" />
+    <result column="c003" property="c003" jdbcType="CHAR" />
+    <result column="d001" property="d001" jdbcType="CHAR" />
+    <result column="d002" property="d002" jdbcType="CHAR" />
+    <result column="d003" property="d003" jdbcType="CHAR" />
+    <result column="d004" property="d004" jdbcType="CHAR" />
+    <result column="e001" property="e001" jdbcType="CHAR" />
+    <result column="e002" property="e002" jdbcType="CHAR" />
+    <result column="e003" property="e003" jdbcType="CHAR" />
+    <result column="e004" property="e004" jdbcType="CHAR" />
+    <result column="f001" property="f001" jdbcType="CHAR" />
+    <result column="f002" property="f002" jdbcType="CHAR" />
+    <result column="f003" property="f003" jdbcType="CHAR" />
+    <result column="f004" property="f004" jdbcType="CHAR" />
+    <result column="g001" property="g001" jdbcType="CHAR" />
+    <result column="g002" property="g002" jdbcType="CHAR" />
+    <result column="g003" property="g003" jdbcType="CHAR" />
+    <result column="g004" property="g004" jdbcType="CHAR" />
+    <result column="g005" property="g005" jdbcType="CHAR" />
+    <result column="h001" property="h001" jdbcType="CHAR" />
+    <result column="h002" property="h002" jdbcType="CHAR" />
+    <result column="h003" property="h003" jdbcType="CHAR" />
+    <result column="h004" property="h004" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, mobile, report_number, a001, a002, b001, b002, b003, b004, b005, c001, c002, 
+    c003, d001, d002, d003, d004, e001, e002, e003, e004, f001, f002, f003, f004, g001, 
+    g002, g003, g004, g005, h001, h002, h003, h004
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from an_risk_param
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from an_risk_param
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.AnRiskParam" >
+    insert into an_risk_param (id, vid, mobile, 
+      report_number, a001, a002, 
+      b001, b002, b003, b004, 
+      b005, c001, c002, c003, 
+      d001, d002, d003, d004, 
+      e001, e002, e003, e004, 
+      f001, f002, f003, f004, 
+      g001, g002, g003, g004, 
+      g005, h001, h002, h003, 
+      h004)
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{mobile,jdbcType=BIGINT}, 
+      #{reportNumber,jdbcType=VARCHAR}, #{a001,jdbcType=CHAR}, #{a002,jdbcType=CHAR}, 
+      #{b001,jdbcType=CHAR}, #{b002,jdbcType=CHAR}, #{b003,jdbcType=CHAR}, #{b004,jdbcType=CHAR}, 
+      #{b005,jdbcType=CHAR}, #{c001,jdbcType=CHAR}, #{c002,jdbcType=CHAR}, #{c003,jdbcType=CHAR}, 
+      #{d001,jdbcType=CHAR}, #{d002,jdbcType=CHAR}, #{d003,jdbcType=CHAR}, #{d004,jdbcType=CHAR}, 
+      #{e001,jdbcType=CHAR}, #{e002,jdbcType=CHAR}, #{e003,jdbcType=CHAR}, #{e004,jdbcType=CHAR}, 
+      #{f001,jdbcType=CHAR}, #{f002,jdbcType=CHAR}, #{f003,jdbcType=CHAR}, #{f004,jdbcType=CHAR}, 
+      #{g001,jdbcType=CHAR}, #{g002,jdbcType=CHAR}, #{g003,jdbcType=CHAR}, #{g004,jdbcType=CHAR}, 
+      #{g005,jdbcType=CHAR}, #{h001,jdbcType=CHAR}, #{h002,jdbcType=CHAR}, #{h003,jdbcType=CHAR}, 
+      #{h004,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.AnRiskParam" >
+    insert into an_risk_param
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="reportNumber != null" >
+        report_number,
+      </if>
+      <if test="a001 != null" >
+        a001,
+      </if>
+      <if test="a002 != null" >
+        a002,
+      </if>
+      <if test="b001 != null" >
+        b001,
+      </if>
+      <if test="b002 != null" >
+        b002,
+      </if>
+      <if test="b003 != null" >
+        b003,
+      </if>
+      <if test="b004 != null" >
+        b004,
+      </if>
+      <if test="b005 != null" >
+        b005,
+      </if>
+      <if test="c001 != null" >
+        c001,
+      </if>
+      <if test="c002 != null" >
+        c002,
+      </if>
+      <if test="c003 != null" >
+        c003,
+      </if>
+      <if test="d001 != null" >
+        d001,
+      </if>
+      <if test="d002 != null" >
+        d002,
+      </if>
+      <if test="d003 != null" >
+        d003,
+      </if>
+      <if test="d004 != null" >
+        d004,
+      </if>
+      <if test="e001 != null" >
+        e001,
+      </if>
+      <if test="e002 != null" >
+        e002,
+      </if>
+      <if test="e003 != null" >
+        e003,
+      </if>
+      <if test="e004 != null" >
+        e004,
+      </if>
+      <if test="f001 != null" >
+        f001,
+      </if>
+      <if test="f002 != null" >
+        f002,
+      </if>
+      <if test="f003 != null" >
+        f003,
+      </if>
+      <if test="f004 != null" >
+        f004,
+      </if>
+      <if test="g001 != null" >
+        g001,
+      </if>
+      <if test="g002 != null" >
+        g002,
+      </if>
+      <if test="g003 != null" >
+        g003,
+      </if>
+      <if test="g004 != null" >
+        g004,
+      </if>
+      <if test="g005 != null" >
+        g005,
+      </if>
+      <if test="h001 != null" >
+        h001,
+      </if>
+      <if test="h002 != null" >
+        h002,
+      </if>
+      <if test="h003 != null" >
+        h003,
+      </if>
+      <if test="h004 != null" >
+        h004,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="reportNumber != null" >
+        #{reportNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="a001 != null" >
+        #{a001,jdbcType=CHAR},
+      </if>
+      <if test="a002 != null" >
+        #{a002,jdbcType=CHAR},
+      </if>
+      <if test="b001 != null" >
+        #{b001,jdbcType=CHAR},
+      </if>
+      <if test="b002 != null" >
+        #{b002,jdbcType=CHAR},
+      </if>
+      <if test="b003 != null" >
+        #{b003,jdbcType=CHAR},
+      </if>
+      <if test="b004 != null" >
+        #{b004,jdbcType=CHAR},
+      </if>
+      <if test="b005 != null" >
+        #{b005,jdbcType=CHAR},
+      </if>
+      <if test="c001 != null" >
+        #{c001,jdbcType=CHAR},
+      </if>
+      <if test="c002 != null" >
+        #{c002,jdbcType=CHAR},
+      </if>
+      <if test="c003 != null" >
+        #{c003,jdbcType=CHAR},
+      </if>
+      <if test="d001 != null" >
+        #{d001,jdbcType=CHAR},
+      </if>
+      <if test="d002 != null" >
+        #{d002,jdbcType=CHAR},
+      </if>
+      <if test="d003 != null" >
+        #{d003,jdbcType=CHAR},
+      </if>
+      <if test="d004 != null" >
+        #{d004,jdbcType=CHAR},
+      </if>
+      <if test="e001 != null" >
+        #{e001,jdbcType=CHAR},
+      </if>
+      <if test="e002 != null" >
+        #{e002,jdbcType=CHAR},
+      </if>
+      <if test="e003 != null" >
+        #{e003,jdbcType=CHAR},
+      </if>
+      <if test="e004 != null" >
+        #{e004,jdbcType=CHAR},
+      </if>
+      <if test="f001 != null" >
+        #{f001,jdbcType=CHAR},
+      </if>
+      <if test="f002 != null" >
+        #{f002,jdbcType=CHAR},
+      </if>
+      <if test="f003 != null" >
+        #{f003,jdbcType=CHAR},
+      </if>
+      <if test="f004 != null" >
+        #{f004,jdbcType=CHAR},
+      </if>
+      <if test="g001 != null" >
+        #{g001,jdbcType=CHAR},
+      </if>
+      <if test="g002 != null" >
+        #{g002,jdbcType=CHAR},
+      </if>
+      <if test="g003 != null" >
+        #{g003,jdbcType=CHAR},
+      </if>
+      <if test="g004 != null" >
+        #{g004,jdbcType=CHAR},
+      </if>
+      <if test="g005 != null" >
+        #{g005,jdbcType=CHAR},
+      </if>
+      <if test="h001 != null" >
+        #{h001,jdbcType=CHAR},
+      </if>
+      <if test="h002 != null" >
+        #{h002,jdbcType=CHAR},
+      </if>
+      <if test="h003 != null" >
+        #{h003,jdbcType=CHAR},
+      </if>
+      <if test="h004 != null" >
+        #{h004,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.AnRiskParam" >
+    update an_risk_param
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=BIGINT},
+      </if>
+      <if test="reportNumber != null" >
+        report_number = #{reportNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="a001 != null" >
+        a001 = #{a001,jdbcType=CHAR},
+      </if>
+      <if test="a002 != null" >
+        a002 = #{a002,jdbcType=CHAR},
+      </if>
+      <if test="b001 != null" >
+        b001 = #{b001,jdbcType=CHAR},
+      </if>
+      <if test="b002 != null" >
+        b002 = #{b002,jdbcType=CHAR},
+      </if>
+      <if test="b003 != null" >
+        b003 = #{b003,jdbcType=CHAR},
+      </if>
+      <if test="b004 != null" >
+        b004 = #{b004,jdbcType=CHAR},
+      </if>
+      <if test="b005 != null" >
+        b005 = #{b005,jdbcType=CHAR},
+      </if>
+      <if test="c001 != null" >
+        c001 = #{c001,jdbcType=CHAR},
+      </if>
+      <if test="c002 != null" >
+        c002 = #{c002,jdbcType=CHAR},
+      </if>
+      <if test="c003 != null" >
+        c003 = #{c003,jdbcType=CHAR},
+      </if>
+      <if test="d001 != null" >
+        d001 = #{d001,jdbcType=CHAR},
+      </if>
+      <if test="d002 != null" >
+        d002 = #{d002,jdbcType=CHAR},
+      </if>
+      <if test="d003 != null" >
+        d003 = #{d003,jdbcType=CHAR},
+      </if>
+      <if test="d004 != null" >
+        d004 = #{d004,jdbcType=CHAR},
+      </if>
+      <if test="e001 != null" >
+        e001 = #{e001,jdbcType=CHAR},
+      </if>
+      <if test="e002 != null" >
+        e002 = #{e002,jdbcType=CHAR},
+      </if>
+      <if test="e003 != null" >
+        e003 = #{e003,jdbcType=CHAR},
+      </if>
+      <if test="e004 != null" >
+        e004 = #{e004,jdbcType=CHAR},
+      </if>
+      <if test="f001 != null" >
+        f001 = #{f001,jdbcType=CHAR},
+      </if>
+      <if test="f002 != null" >
+        f002 = #{f002,jdbcType=CHAR},
+      </if>
+      <if test="f003 != null" >
+        f003 = #{f003,jdbcType=CHAR},
+      </if>
+      <if test="f004 != null" >
+        f004 = #{f004,jdbcType=CHAR},
+      </if>
+      <if test="g001 != null" >
+        g001 = #{g001,jdbcType=CHAR},
+      </if>
+      <if test="g002 != null" >
+        g002 = #{g002,jdbcType=CHAR},
+      </if>
+      <if test="g003 != null" >
+        g003 = #{g003,jdbcType=CHAR},
+      </if>
+      <if test="g004 != null" >
+        g004 = #{g004,jdbcType=CHAR},
+      </if>
+      <if test="g005 != null" >
+        g005 = #{g005,jdbcType=CHAR},
+      </if>
+      <if test="h001 != null" >
+        h001 = #{h001,jdbcType=CHAR},
+      </if>
+      <if test="h002 != null" >
+        h002 = #{h002,jdbcType=CHAR},
+      </if>
+      <if test="h003 != null" >
+        h003 = #{h003,jdbcType=CHAR},
+      </if>
+      <if test="h004 != null" >
+        h004 = #{h004,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.AnRiskParam" >
+    update an_risk_param
+    set vid = #{vid,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=BIGINT},
+      report_number = #{reportNumber,jdbcType=VARCHAR},
+      a001 = #{a001,jdbcType=CHAR},
+      a002 = #{a002,jdbcType=CHAR},
+      b001 = #{b001,jdbcType=CHAR},
+      b002 = #{b002,jdbcType=CHAR},
+      b003 = #{b003,jdbcType=CHAR},
+      b004 = #{b004,jdbcType=CHAR},
+      b005 = #{b005,jdbcType=CHAR},
+      c001 = #{c001,jdbcType=CHAR},
+      c002 = #{c002,jdbcType=CHAR},
+      c003 = #{c003,jdbcType=CHAR},
+      d001 = #{d001,jdbcType=CHAR},
+      d002 = #{d002,jdbcType=CHAR},
+      d003 = #{d003,jdbcType=CHAR},
+      d004 = #{d004,jdbcType=CHAR},
+      e001 = #{e001,jdbcType=CHAR},
+      e002 = #{e002,jdbcType=CHAR},
+      e003 = #{e003,jdbcType=CHAR},
+      e004 = #{e004,jdbcType=CHAR},
+      f001 = #{f001,jdbcType=CHAR},
+      f002 = #{f002,jdbcType=CHAR},
+      f003 = #{f003,jdbcType=CHAR},
+      f004 = #{f004,jdbcType=CHAR},
+      g001 = #{g001,jdbcType=CHAR},
+      g002 = #{g002,jdbcType=CHAR},
+      g003 = #{g003,jdbcType=CHAR},
+      g004 = #{g004,jdbcType=CHAR},
+      g005 = #{g005,jdbcType=CHAR},
+      h001 = #{h001,jdbcType=CHAR},
+      h002 = #{h002,jdbcType=CHAR},
+      h003 = #{h003,jdbcType=CHAR},
+      h004 = #{h004,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectD123ByVid" parameterType="string" resultType="map">
+  	SELECT d001,d002,d003 FROM jyy_fk_db.an_risk_param WHERE vid=#{vid} ORDER BY id DESC LIMIT 1
+  </select>
+</mapper>

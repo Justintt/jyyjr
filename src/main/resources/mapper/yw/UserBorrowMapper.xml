@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.UserBorrowMapper" >
+  <resultMap id="BaseResultMap" type="com.jyyjr.pojo.UserBorrow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="vid" property="vid" jdbcType="CHAR" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="play_account" property="playAccount" jdbcType="CHAR" />
+    <result column="get_time" property="getTime" jdbcType="INTEGER" />
+    <result column="is_success" property="isSuccess" jdbcType="TINYINT" />
+    <result column="borrow_no" property="borrowNo" jdbcType="CHAR" />
+    <result column="ctime" property="ctime" jdbcType="INTEGER" />
+    <result column="fee" property="fee" jdbcType="REAL" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="rate_id" property="rateId" jdbcType="TINYINT" />
+    <result column="checkstatus" property="checkstatus" jdbcType="TINYINT" />
+    <result column="is_bespeak" property="isBespeak" jdbcType="TINYINT" />
+    <result column="borrow_type" property="borrowType" jdbcType="BIT" />
+    <result column="coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="balance_fee" property="balanceFee" jdbcType="REAL" />
+    <result column="is_balance" property="isBalance" jdbcType="TINYINT" />
+    <result column="coupon_money" property="couponMoney" jdbcType="DECIMAL" />
+    <result column="refund_money" property="refundMoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, vid, money, play_account, get_time, is_success, borrow_no, ctime, fee, status, 
+    rate_id, checkstatus, is_bespeak, borrow_type, coupon_id, balance_fee, is_balance, 
+    coupon_money, refund_money
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dxd_caiwu.user_borrow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dxd_caiwu.user_borrow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyyjr.pojo.UserBorrow" >
+    insert into dxd_caiwu.user_borrow (id, vid, money, 
+      play_account, get_time, is_success, 
+      borrow_no, ctime, fee, status, 
+      rate_id, checkstatus, is_bespeak, 
+      borrow_type, coupon_id, balance_fee, 
+      is_balance, coupon_money, refund_money
+      )
+    values (#{id,jdbcType=INTEGER}, #{vid,jdbcType=CHAR}, #{money,jdbcType=DECIMAL}, 
+      #{playAccount,jdbcType=CHAR}, #{getTime,jdbcType=INTEGER}, #{isSuccess,jdbcType=TINYINT}, 
+      #{borrowNo,jdbcType=CHAR}, #{ctime,jdbcType=INTEGER}, #{fee,jdbcType=REAL}, #{status,jdbcType=TINYINT}, 
+      #{rateId,jdbcType=TINYINT}, #{checkstatus,jdbcType=TINYINT}, #{isBespeak,jdbcType=TINYINT}, 
+      #{borrowType,jdbcType=BIT}, #{couponId,jdbcType=INTEGER}, #{balanceFee,jdbcType=REAL}, 
+      #{isBalance,jdbcType=TINYINT}, #{couponMoney,jdbcType=DECIMAL}, #{refundMoney,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyyjr.pojo.UserBorrow" >
+    insert into dxd_caiwu.user_borrow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="vid != null" >
+        vid,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="playAccount != null" >
+        play_account,
+      </if>
+      <if test="getTime != null" >
+        get_time,
+      </if>
+      <if test="isSuccess != null" >
+        is_success,
+      </if>
+      <if test="borrowNo != null" >
+        borrow_no,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="fee != null" >
+        fee,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="rateId != null" >
+        rate_id,
+      </if>
+      <if test="checkstatus != null" >
+        checkstatus,
+      </if>
+      <if test="isBespeak != null" >
+        is_bespeak,
+      </if>
+      <if test="borrowType != null" >
+        borrow_type,
+      </if>
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="balanceFee != null" >
+        balance_fee,
+      </if>
+      <if test="isBalance != null" >
+        is_balance,
+      </if>
+      <if test="couponMoney != null" >
+        coupon_money,
+      </if>
+      <if test="refundMoney != null" >
+        refund_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vid != null" >
+        #{vid,jdbcType=CHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="playAccount != null" >
+        #{playAccount,jdbcType=CHAR},
+      </if>
+      <if test="getTime != null" >
+        #{getTime,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=TINYINT},
+      </if>
+      <if test="borrowNo != null" >
+        #{borrowNo,jdbcType=CHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=REAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="rateId != null" >
+        #{rateId,jdbcType=TINYINT},
+      </if>
+      <if test="checkstatus != null" >
+        #{checkstatus,jdbcType=TINYINT},
+      </if>
+      <if test="isBespeak != null" >
+        #{isBespeak,jdbcType=TINYINT},
+      </if>
+      <if test="borrowType != null" >
+        #{borrowType,jdbcType=BIT},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="balanceFee != null" >
+        #{balanceFee,jdbcType=REAL},
+      </if>
+      <if test="isBalance != null" >
+        #{isBalance,jdbcType=TINYINT},
+      </if>
+      <if test="couponMoney != null" >
+        #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="refundMoney != null" >
+        #{refundMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyyjr.pojo.UserBorrow" >
+    update dxd_caiwu.user_borrow
+    <set >
+      <if test="vid != null" >
+        vid = #{vid,jdbcType=CHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="playAccount != null" >
+        play_account = #{playAccount,jdbcType=CHAR},
+      </if>
+      <if test="getTime != null" >
+        get_time = #{getTime,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        is_success = #{isSuccess,jdbcType=TINYINT},
+      </if>
+      <if test="borrowNo != null" >
+        borrow_no = #{borrowNo,jdbcType=CHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null" >
+        fee = #{fee,jdbcType=REAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="rateId != null" >
+        rate_id = #{rateId,jdbcType=TINYINT},
+      </if>
+      <if test="checkstatus != null" >
+        checkstatus = #{checkstatus,jdbcType=TINYINT},
+      </if>
+      <if test="isBespeak != null" >
+        is_bespeak = #{isBespeak,jdbcType=TINYINT},
+      </if>
+      <if test="borrowType != null" >
+        borrow_type = #{borrowType,jdbcType=BIT},
+      </if>
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="balanceFee != null" >
+        balance_fee = #{balanceFee,jdbcType=REAL},
+      </if>
+      <if test="isBalance != null" >
+        is_balance = #{isBalance,jdbcType=TINYINT},
+      </if>
+      <if test="couponMoney != null" >
+        coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="refundMoney != null" >
+        refund_money = #{refundMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyyjr.pojo.UserBorrow" >
+    update dxd_caiwu.user_borrow
+    set vid = #{vid,jdbcType=CHAR},
+      money = #{money,jdbcType=DECIMAL},
+      play_account = #{playAccount,jdbcType=CHAR},
+      get_time = #{getTime,jdbcType=INTEGER},
+      is_success = #{isSuccess,jdbcType=TINYINT},
+      borrow_no = #{borrowNo,jdbcType=CHAR},
+      ctime = #{ctime,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=REAL},
+      status = #{status,jdbcType=TINYINT},
+      rate_id = #{rateId,jdbcType=TINYINT},
+      checkstatus = #{checkstatus,jdbcType=TINYINT},
+      is_bespeak = #{isBespeak,jdbcType=TINYINT},
+      borrow_type = #{borrowType,jdbcType=BIT},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      balance_fee = #{balanceFee,jdbcType=REAL},
+      is_balance = #{isBalance,jdbcType=TINYINT},
+      coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      refund_money = #{refundMoney,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectUserBorrowByVid" resultMap="BaseResultMap" parameterType="string">
+  	SELECT 
+  	<include refid="Base_Column_List" />
+  	from dxd_caiwu.user_borrow
+    where vid = #{vid}
+  </select>
+  
+  <select id="selectBorrowCount" resultType="string">
+  	SELECT vid FROM (SELECT vid,COUNT(vid) borrowCount FROM dxd_caiwu.user_borrow WHERE is_success=2 GROUP BY vid) b WHERE b.borrowCount>1
+  </select>
+  
+  <select id="selectBorrowInUserWarning" resultType="string">
+  	SELECT vid FROM dxd_fk.user_warning WHERE vid IN (SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' AND 
+  	vid NOT IN (SELECT vid FROM dxd_fk.warning WHERE type='Y0001' AND `status`=1) GROUP BY vid)
+  </select>
+  
+  <select id="selectBorrowNow" resultType="string">
+  	SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' GROUP BY vid
+  </select>
+  
+  <!-- <select id="selectRepayOrOverdueByMarning" resultType="string">
+  	SELECT r.vid FROM dxd_caiwu.user_repayment r INNER JOIN (SELECT vid,MAX(repayment_no) repayment_no FROM dxd_caiwu.user_repayment 
+  	WHERE vid IN (SELECT vid FROM dxd_fk.warning WHERE `status`=1) GROUP BY vid) a ON r.repayment_no=a.repayment_no AND (r.`status`=3 OR r.is_overdue=2)
+  </select> -->
+  <select id="selectRepayOrOverdueByMarning" resultType="string">
+  	SELECT vid FROM dxd_caiwu.user_repayment WHERE vid NOT IN (SELECT vid FROM dxd_caiwu.user_repayment WHERE vid IN 
+  	(SELECT vid FROM dxd_fk.warning WHERE `status` IN (1,2) GROUP BY vid) AND `status`=1 AND is_overdue=1 GROUP BY vid) AND vid IN 
+  	(SELECT vid FROM dxd_fk.warning WHERE `status` IN (1,2) GROUP BY vid) GROUP BY vid
+  </select>
+</mapper>

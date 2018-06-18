@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyyjr.dao.ywdao.UserRepaymentMapper" >
+  <select id="selectLastBorrowMsg" resultType="com.jyyjr.vo.UserRepaymentVo" parameterType="string">
+  	SELECT repay_time,borrow_no,repayment_no FROM dxd_caiwu.user_repayment WHERE vid=#{vid} ORDER BY borrow_no DESC LIMIT 1
+  </select>
+  
+  <select id="selectFqMoney" resultType="com.jyyjr.vo.UserRepaymentVo">
+  	SELECT vid,repay_money FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' AND is_stages IN (2,3) 
+  	AND vid NOT IN (SELECT vid FROM dxd_fk.warning WHERE `status`=1 AND type='Y0005')
+  </select>
+  <select id="selectFqMoneyVid" resultType="string">
+  	SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND is_overdue=1 AND vid!='' AND is_stages IN (2,3) AND 
+  	vid NOT IN (SELECT vid FROM dxd_fk.warning WHERE `status`=1 AND type='Y0005') GROUP BY vid
+  </select>
+  
+  <select id="selectLastRepay" resultType="string">
+  	SELECT c.vid FROM (SELECT a.vid,r.repay_time,r.real_time,r.borrow_no,r.repayment_no,r.type FROM dxd_caiwu.user_repayment r INNER JOIN 
+  	(SELECT vid,MAX(borrow_no) borrow_no FROM dxd_caiwu.user_repayment WHERE vid IN (SELECT vid FROM (SELECT vid,COUNT(vid) borrowCount FROM 
+  	dxd_caiwu.user_borrow WHERE is_success=2 GROUP BY vid) b WHERE b.borrowCount>1 AND vid IN (SELECT vid FROM dxd_caiwu.user_repayment WHERE `status`=1 AND 
+  	is_overdue=1 AND vid!='' AND vid NOT IN (SELECT vid FROM dxd_fk.warning WHERE type='Y0006' AND `status`=1) GROUP BY vid)) AND (`status`=3 OR is_overdue=2) 
+  	GROUP BY vid) a ON r.borrow_no=a.borrow_no WHERE r.type=1) c WHERE c.real_time>(c.repay_time+68400)
+  </select>
+  
+  <select id="selectOverdueByVid" parameterType="string" resultType="com.jyyjr.vo.LinkedOverdueVo">
+  	SELECT r.*,overdue_day FROM dxd_urge.user_overdue o RIGHT JOIN (SELECT vid,repayment_no,is_overdue,`status` FROM dxd_caiwu.user_repayment 
+  	WHERE vid=#{vid} AND `status`!=5 ORDER BY repayment_no DESC LIMIT 1) r ON r.repayment_no=o.repayment_no
+  </select>
+</mapper>
