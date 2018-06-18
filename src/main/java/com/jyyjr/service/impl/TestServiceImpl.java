@@ -67,15 +67,10 @@ public class TestServiceImpl implements TestService{
 		lists.add("2c1401d0ab9463021e5f3b5a38f84122");
 		lists.add("4ac92a71ad66a1f87832e91c89950db8");
 		lists.add("6fa4b0f509f919e4e0586794e446e226");
-		try {
-			for(String vid : lists) {
-				int rowCount = jmVidMapper.insertVid(vid);
-			}
-		} catch (Exception e) {
-			logger.info("出错");
-			throw new RuntimeException("错");
-		}
 		
+		for(String vid : lists) {
+			int rowCount = jmVidMapper.insertVid(vid);
+		}
 		return 1001;
 		
 	}

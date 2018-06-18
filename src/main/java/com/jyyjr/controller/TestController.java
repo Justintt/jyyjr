@@ -107,7 +107,6 @@ public class TestController {
 	@ResponseBody
 	public Message<Integer> getJmDay(String vid) {
 		return testService.getJmDay(vid);
-		
 	}
 	
 	/**
